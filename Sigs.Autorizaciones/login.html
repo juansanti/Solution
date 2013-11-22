@@ -1,0 +1,15 @@
+<div class="container" ng-controller="AuthenticationCtrl">
+
+    <form class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <input type="text" placeholder="Email address" class="input-block-level" ng-model="Usuario">
+        <input type="password" placeholder="Password" class="input-block-level" ng-model="Password">
+        <label class="checkbox">
+            <input type="checkbox" value="remember-me">
+            Remember me
+        </label>
+        <!--<a href="#/Autorizar" class="btn btn-info">Iniciar Sesión</a>-->
+        <input type="button" value="Iniciar Sesión" class="btn btn-info" ng-click="Authenticate()" />
+    </form>
+
+</div>

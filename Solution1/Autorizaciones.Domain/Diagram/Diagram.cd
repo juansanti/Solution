@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Sigs.AutorizacionesOnline.Models.Afiliado" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAEgEAAAABAAAAAA4AAAAAAAAAIAAI=</HashCode>
+      <FileName>Entities\Afiliado.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sigs.AutorizacionesOnline.Models.Autorizacion" Collapsed="true">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAGAiBAAAAAAAECIALAAAAAAAABAAAAAMAACAGAAACA=</HashCode>
+      <FileName>Entities\Autorizacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sigs.AutorizacionesOnline.Models.PrestacionAutorizacion" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQgEAAAEAAAAAABAAAAAAEAAAAAAACAAAAAAAAAY=</HashCode>
+      <FileName>Entities\PrestacionAutorizacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sigs.AutorizacionesOnline.Models.Entities.Cobertura" Collapsed="true">
+    <Position X="16.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAggAEAAEAAAEAggAAAACAgAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Entities\Cobertura.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sigs.AutorizacionesOnline.Models.Entities.Diagnostico" Collapsed="true">
+    <Position X="18.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Diagnostico.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sigs.AutorizacionesOnline.Models.Entities.EntityBase" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAIAAAAAAABAAAAAAAAIAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Entities\EntityBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sigs.AutorizacionesOnline.Models.Entities.RuleEntity" Collapsed="true">
+    <Position X="8.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\EntityBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sigs.AutorizacionesOnline.Models.Entities.Grupo" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Entities\Grupo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sigs.AutorizacionesOnline.Models.Entities.Prestacion" Collapsed="true">
+    <Position X="11.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAQAAgAAADAAAAIAAAAAAAAEAAAAAAEA=</HashCode>
+      <FileName>Entities\Prestacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sigs.AutorizacionesOnline.Models.Entities.Prestadora" Collapsed="true">
+    <Position X="14" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAUAAAAAAAAAgAAAAAAAAQAAAAAAAAAAAgA=</HashCode>
+      <FileName>Entities\Prestadora.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sigs.AutorizacionesOnline.Models.Entities.SubGrupo" Collapsed="true">
+    <Position X="23.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAABAAAAAAEAAAABAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\SubGrupo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sigs.AutorizacionesOnline.Models.Entities.TipoAutorizacion" Collapsed="true">
+    <Position X="20.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\TipoAutorizacion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sigs.AutorizacionesOnline.Models.Entities.TipoPrestadora" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\TipoPrestadora.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sigs.AutorizacionesOnline.Models.Entities.Usuario" Collapsed="true">
+    <Position X="25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACABAAACAAAAAABAAAAAAAEAAAAQACAAAQAAAAAAA=</HashCode>
+      <FileName>Entities\Usuario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Sigs.AutorizacionesOnline.Models.Entities.TipoCobertura" Collapsed="true">
+    <Position X="23.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAoAAAAEAgAAmAsCjACBAAAAgAAFIEABEkAGBgIAkAA=</HashCode>
+      <FileName>Entities\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Sigs.AutorizacionesOnline.Models.Entities.SexoPrestaciones" Collapsed="true">
+    <Position X="25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Entities\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Sigs.AutorizacionesOnline.Models.Entities.SexoAfiliado" Collapsed="true">
+    <Position X="23.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Entities\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

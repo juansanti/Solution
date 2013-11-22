@@ -1,0 +1,1 @@
+﻿- Al Momento de Registrar la autorizacion, Todavia no se está Registrando en la TAbla NApsAutorizaciones;  (Hecho).

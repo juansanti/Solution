@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sigs.Autorizaciones", "..\Sigs.Autorizaciones\Sigs.Autorizaciones.csproj", "{1676B2B5-C7CE-483D-A2C7-019285EFC70D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bursteg.Samples.RuleExecutionWithoutWorkflow", "Bursteg.Samples.RuleExecutionWithoutWorkflow\Bursteg.Samples.RuleExecutionWithoutWorkflow.csproj", "{5D991601-36D0-4A83-8862-2412E0953E15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autorizaciones.Domain", "Autorizaciones.Domain\Autorizaciones.Domain.csproj", "{20449BD6-52A9-4D19-BB71-B73FCAC669FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinformRuleEditor", "WinformRuleEditor\WinformRuleEditor.csproj", "{9BA22EE9-10CD-40F3-B160-13EE642575C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutorizacionRuleEngine.Tests", "AutorizacionRuleEngine.Tests\AutorizacionRuleEngine.Tests.csproj", "{BA6DE11D-E15A-47A3-A7E1-2BE532546FBE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1676B2B5-C7CE-483D-A2C7-019285EFC70D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1676B2B5-C7CE-483D-A2C7-019285EFC70D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1676B2B5-C7CE-483D-A2C7-019285EFC70D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1676B2B5-C7CE-483D-A2C7-019285EFC70D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D991601-36D0-4A83-8862-2412E0953E15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D991601-36D0-4A83-8862-2412E0953E15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D991601-36D0-4A83-8862-2412E0953E15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D991601-36D0-4A83-8862-2412E0953E15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20449BD6-52A9-4D19-BB71-B73FCAC669FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20449BD6-52A9-4D19-BB71-B73FCAC669FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20449BD6-52A9-4D19-BB71-B73FCAC669FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20449BD6-52A9-4D19-BB71-B73FCAC669FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BA22EE9-10CD-40F3-B160-13EE642575C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BA22EE9-10CD-40F3-B160-13EE642575C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BA22EE9-10CD-40F3-B160-13EE642575C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BA22EE9-10CD-40F3-B160-13EE642575C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA6DE11D-E15A-47A3-A7E1-2BE532546FBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA6DE11D-E15A-47A3-A7E1-2BE532546FBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA6DE11D-E15A-47A3-A7E1-2BE532546FBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA6DE11D-E15A-47A3-A7E1-2BE532546FBE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

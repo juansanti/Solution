@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html ng-app="autorizaciones">
+<meta charset="utf-8">
+﻿
+    <head>
+        <title>Autorizaciones</title>
+        <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    </head>
+
+<body>
+    <p ng-controller="GeneralCtrl" ng-show="MostrarDesarrollo" class="well well-small" style="background-color: Red; text-align: center; font-weight: bold; font-size: medium;">
+        CONNECTADO AMBIENTE DESARROLLO {{ DbName }}
+    </p>
+    <div ng-view>
+        this is a page
+    </div>
+
+
+    <script src="Scripts/jquery.js"></script>
+
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    <script src="Scripts/angular.js"></script>
+
+    <script src="Scripts/AngularStrap.js"></script>
+
+    <script src="Scripts/controllers.js"></script>
+</body>
+</html>

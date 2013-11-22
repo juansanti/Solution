@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+@model Sigs.AutorizacionesOnline.Models.LoginModel
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <title>Iniciar Sesión</title>
+</head>
+<body>
+    <div class="container">
+        @using (Html.BeginForm("IniciarSesion", "Seguridad", FormMethod.Post))
+        {
+            <form class="form-signin">
+                <h2 class="form-signin-heading ">Introduzca sus credenciales</h2>
+
+                <input type="text" class="input-block-level" name="UserName" placeholder="Usuario o Email">
+
+                <input type="password" class="input-block-level" name="Password" placeholder="Contraseña">
+
+                <button class="btn btn-large btn-primary" type="submit">Iniciar Sesión</button>
+            </form>
+        }
+    </div>
+</body>
+</html>
