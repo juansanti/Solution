@@ -32,7 +32,6 @@ namespace Sigs.AutorizacionesOnline.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-
         public ActionResult Guardar(Autorizacion autorizacion)
         {
             AutorizacionService service = new AutorizacionService(new ArsDataContext());
@@ -51,7 +50,6 @@ namespace Sigs.AutorizacionesOnline.Controllers
                 throw new InvalidOperationException("No se pudo crear la autorizacion");
             }
         }
-
 
         void Init(Autorizacion a)
         {

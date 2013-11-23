@@ -2,29 +2,6 @@
 /// <reference path="angular.js" />
 /// <reference path="../js/Helpers.js" />
 
-var app = angular.module('autorizaciones', []);
-
-app.directive('datepicker', function () {
-    return {
-        restrict: 'A',
-        require: 'ngModel',
-        link: function (scope, element, attrs, ngModelCtrl) {
-            $(function () {
-                element.datepicker({
-                    dateFormat: 'dd/mm/yy',
-                    onSelect: function (date) {
-                        ngModelCtrl.$setViewValue(date);
-                        scope.$apply();
-                    },
-                    regional: "es",
-                    maxDate: attrs.maxDate,
-                    changeMonth: true,
-                    changeYear: true
-                });
-            });
-        }
-    }
-});
 
 var x = [];
 var autorizacionesScope;
@@ -288,7 +265,7 @@ app.controller('AutorizarCtrl', function ($scope, $routeParams, $http, $filter) 
         $scope.BuscandoAfiliado = true;
 
         $http({
-            url: 'Afiliado/Get/',
+            url: '/Afiliado/Get/',
             method: "POST",
             data: { id: $scope.Autorizacion.Afiliado.Id }
         }).success(function (data) {
@@ -486,29 +463,6 @@ app.controller('AutorizarCtrl', function ($scope, $routeParams, $http, $filter) 
     });
 });
 
-app.controller('AuthenticationCtrl', function ($scope, $http) {
-    $scope.Usuario = "";
-    $scope.Password = "";
-
-    $scope.Authenticate = function () {
-
-        $http({
-            url: 'api/Autorizacion',
-            method: "POST",
-            data: autorizacion,
-            headers: { 'Content-Type': 'application/json' }
-        }).success(function (result) {
-            alert(result.Message);
-
-            var autorizacion = result.Result;
-
-            $scope.Autorizacion = $scope.CreateAutorizacion(autorizacion);
-            $scope.Limpiar();
-
-        });
-    }
-});
-
 app.controller('GeneralCtrl', function ($scope, $http) {
     $scope.MostrarDesarrollo = false;
     $scope.DbName = "";
@@ -528,7 +482,6 @@ app.controller('GeneralCtrl', function ($scope, $http) {
         }
     });
 });
-
 
 function IsNullOrEmpty(value) {
     return (value == null || value == undefined || value == "");

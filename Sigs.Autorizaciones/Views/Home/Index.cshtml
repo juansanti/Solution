@@ -1,41 +1,13 @@
-﻿<link href="~/Content/bootstrap.css" rel="stylesheet" />
-<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
-<link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
-<link href="~/Content/themes/base/jquery.ui.datepicker.css" rel="stylesheet" />
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <div class="container" ng-controller="AutorizarCtrl">
-
-    <div class="masthead">
-        <h3 class="muted">Autorizacion ARS Ejemplo</h3>
-        <div class="container">
-            <div class="pull-left">
-                <h3 class="muted">@ViewBag.Prestadora </h3>
-            </div>
-            <div class="pull-right">
-                @using (@Html.BeginForm("CerrarSesion", "Seguridad", FormMethod.Get, new { Class = "form-inline" }))
-                {
-                    <span class="muted">Usuario: @ViewBag.Usuario.Login  </span>
-                    <button type="submit" class="btn btn-danger">Cerrar Sesión </button>
-                }
-            </div>
-        </div>
-        <div class="navbar">
-            <div class="navbar-inner">
-                <div class="container">
-                    <ul class="nav">
-                        <li class="active"><a href="#">Solicitud de Autorizacion de Servicios</a></li>
-                        <li><a href="#">Reporte de Autorizaciones</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- /.navbar -->
-    </div>
 
     <div class="container">
 
         <div class="row">
             <div class="span2">
-                <img alt="afiliado" src="Images/nofoto.jpg">
+                <img alt="afiliado" src="../Images/nofoto.jpg">
             </div>
             <div class="span10">
                 <div class="row">
@@ -244,16 +216,6 @@
 
 </div>
 
-
-<script src="Scripts/jquery.js"></script>
-
-<script src="~/Scripts/jquery-ui-1.10.3.min.js"></script>
-<script src="~/Scripts/jquery.ui.datepicker-es.js"></script>
-
-<script src="Scripts/bootstrap.min.js"></script>
-
-<script src="Scripts/angular.js"></script>
-
-<script src="Scripts/AngularStrap.js"></script>
-
-<script src="Scripts/controllers.js"></script>
+@section Scripts{
+    <script src="../js/controllers.js"></script>
+}

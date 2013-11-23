@@ -207,6 +207,7 @@
     <Compile Include="Controllers\AfiliadoController.cs" />
     <Compile Include="Controllers\BuscarController.cs" />
     <Compile Include="Controllers\AutorizacionController.cs" />
+    <Compile Include="Controllers\ConsultasController.cs" />
     <Compile Include="Controllers\ControllerBaseClass.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
@@ -287,6 +288,8 @@
     <Content Include="img\glyphicons-halflings-white.png" />
     <Content Include="img\glyphicons-halflings.png" />
     <Content Include="index.html" />
+    <Content Include="js\app.js" />
+    <Content Include="js\Consulta.js" />
     <Content Include="js\Helpers.js" />
     <Content Include="login.html" />
     <Content Include="Notas Importantes.txt" />
@@ -310,7 +313,7 @@
     <Content Include="Scripts\autorizar.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\controllers.js" />
+    <Content Include="js\controllers.js" />
     <None Include="Scripts\jquery-2.0.2.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.2.js" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
@@ -361,6 +364,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-2.0.3.min.map" />
     <Content Include="Views\Seguridad\IniciarSesion.cshtml" />
+    <Content Include="Views\Consultas\Reportes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

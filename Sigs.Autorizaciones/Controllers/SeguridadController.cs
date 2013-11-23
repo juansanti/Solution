@@ -19,6 +19,11 @@ namespace Sigs.AutorizacionesOnline.Controllers
 
         public ActionResult IniciarSesion()
         {
+            if (this.HttpContext.User.Identity.IsAuthenticated)
+            {
+                return Redirect("/Home/Index");
+            }
+
             return View();
         }
 
@@ -36,7 +41,7 @@ namespace Sigs.AutorizacionesOnline.Controllers
                 return Redirect("/Seguridad/IniciarSesion");
             }
 
-            return Redirect("/");
+            return Redirect("/Home/Index");
         }
 
         public ActionResult CerrarSesion()

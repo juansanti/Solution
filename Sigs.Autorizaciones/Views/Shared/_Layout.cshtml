@@ -1,28 +1,71 @@
 ﻿<!DOCTYPE html>
 <html lang="en" ng-app="autorizaciones">
-    <head>
-        <link href="~/Content/Site.css" rel="stylesheet" />
-        <meta charset="utf-8" />
-        <title>@ViewBag.Title - Autorizacion de Servicios Médicos ARS Ejemplo</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
-    <body>
-        <div id="body">
-            @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Autorizacion de Servicios Médicos ARS Ejemplo</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery.ui.datepicker.css" rel="stylesheet" />
+
+</head>
+<body class="container">
+    <div class="masthead well">
+        <h3 class="muted">Autorizacion ARS Ejemplo</h3>
+        <div class="pull-right">
+            @using (@Html.BeginForm("CerrarSesion", "Seguridad", FormMethod.Get, new { Class = "form-inline" }))
+            {
+                <span class="muted">Usuario: @ViewBag.Usuario.Login  </span>
+                <button type="submit" class="btn btn-danger">Cerrar Sesión </button>
+            }
         </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year -</p>
+        <div class="container">
+        </div>
+        <div class="navbar cont">
+            <div class="navbar-inner">
+                <div class="">
+                    <ul class="nav">
+                        <li class="active"><a href="/Home/Index">Solicitud de Autorizacion de Servicios</a></li>
+                        <li><a href="/Consultas/Reportes">Reporte de Autorizaciones</a></li>
+                    </ul>
                 </div>
             </div>
-        </footer>
+        </div>
+        <!-- /.navbar -->
+    </div>
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year -</p>
+            </div>
+        </div>
+    </footer>
 
-    </body>
+</body>
+
+
+<script src="../Scripts/jquery-2.0.3.min.js"></script>
+
+<script src="../Scripts/jquery-ui-1.10.3.min.js"></script>
+<script src="../Scripts/jquery.ui.datepicker-es.js"></script>
+
+<script src="../Scripts/bootstrap.min.js"></script>
+
+<script src="../Scripts/angular.js"></script>
+
+<script src="../Scripts/AngularStrap.js"></script>
+<script src="../js/Helpers.js"></script>
+<script src="~/js/app.js"></script>
+
+    @RenderSection("Scripts", false)
+
 </html>
-<script src="~/js/Helpers.js"></script>
+
