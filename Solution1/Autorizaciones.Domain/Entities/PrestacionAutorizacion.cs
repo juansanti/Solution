@@ -16,7 +16,7 @@ namespace Sigs.AutorizacionesOnline.Models
         public int PrestacionId { get; set; }
         public virtual Prestacion Prestacion { get; set; }
 
-        public decimal Cantidad { get; set; }
+        public int Cantidad { get; set; }
 
         public decimal Tarifa { get; set; }
 

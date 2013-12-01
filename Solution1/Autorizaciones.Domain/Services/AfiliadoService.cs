@@ -30,12 +30,12 @@ namespace Sigs.AutorizacionesOnline.Models
         {
             var fechas = StaticHelpers.GetRangoFechasDeFechaServicio(fechaAfiliacion, a.FechaServicio);
 
-            AfiliadoService service = new AfiliadoService(new ArsDataContext());
-
             var fechaInicial = fechas[0];
             var fechaFinal = fechas[1];
 
-            var consumido = afiliado.Autorizaciones.Where(p => p.TipoAutorizacionId == 12 && p.Disponible && p.FechaServicio >= fechaInicial && p.FechaServicio <= fechaFinal)
+            var consumido = afiliado
+                .Autorizaciones
+                .Where(p => p.TipoAutorizacionId == 12 && p.Disponible && p.FechaServicio >= fechaInicial && p.FechaServicio <= fechaFinal)
                 .SelectMany(p => p.Prestaciones)
                 .Where(p => p.Prestacion.SubGrupoId == "12.1" && p.Disponible)
                 .Sum(p => p.Aprobado);
@@ -55,6 +55,24 @@ namespace Sigs.AutorizacionesOnline.Models
             var consumido = afiliado.Autorizaciones.Where(p => p.TipoAutorizacionId == 12 && p.Disponible && p.FechaServicio >= fechaInicial && p.FechaServicio <= fechaFinal)
                 .SelectMany(p => p.Prestaciones)
                 .Where(p => p.Prestacion.SubGrupoId == "12.2" && p.Disponible)
+                .Sum(p => p.Aprobado);
+
+            return limite - consumido;
+        }
+
+        public decimal Balance(int tipoAutorizacionId, string subGrupoId, Autorizacion a, decimal limite)
+        {
+            var fechas = StaticHelpers.GetRangoFechasDeFechaServicio(a.Afiliado.FechaAfiliacion, a.FechaServicio);
+
+            AfiliadoService service = new AfiliadoService(new ArsDataContext());
+
+            var fechaInicial = fechas[0];
+            var fechaFinal = fechas[1];
+
+            var consumido = a.Afiliado
+                .Autorizaciones
+                .Where(p => (p.TipoAutorizacionId == tipoAutorizacionId) && p.Disponible && p.FechaServicio >= fechaInicial && p.FechaServicio <= fechaFinal)
+                .SelectMany(p => p.Prestaciones.Where(q => (subGrupoId == null) || (q.Prestacion.SubGrupoId == subGrupoId) && q.Disponible))
                 .Sum(p => p.Aprobado);
 
             return limite - consumido;

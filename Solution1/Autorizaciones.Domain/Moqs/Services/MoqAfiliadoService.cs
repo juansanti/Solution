@@ -35,6 +35,11 @@ namespace Sigs.AutorizacionesOnline.Models.Moqs.Services
             return 3000;
         }
 
+        public decimal Balance(int tipoAutorizacionId, string subGrupoId, Autorizacion a, decimal limite)
+        {
+            return 0;
+        }
+
         #endregion
     }
 }

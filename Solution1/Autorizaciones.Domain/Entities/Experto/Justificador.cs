@@ -108,7 +108,7 @@ namespace Autorizaciones.Domain.Entities.Experto
         public JustificacionResult NoCubreNada(Autorizacion a)
         {
             JustificacionResult r = new JustificacionResult();
-            r.resumen = string.Format("Lo sentimos, no podemos cubrir {0} en ninguno de los servicios solicitados. a continuación detallan las razones", adjetivo(a.Afiliado));
+            r.resumen = string.Format("Lo sentimos, no podemos cubrir {0} {1} en ninguno de los servicios solicitados. a continuación detallan las razones", adjetivo(a.Afiliado), a.Afiliado.NombreCompleto);
 
             if (!string.IsNullOrEmpty(a.RulesAppliances))
                 r.detalle.Add(a.RulesAppliances);

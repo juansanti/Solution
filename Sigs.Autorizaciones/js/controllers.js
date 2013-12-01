@@ -372,6 +372,10 @@ app.controller('AutorizarCtrl', function ($scope, $routeParams, $http, $filter) 
         $scope.ResultadoAnalisis = null;
     }
 
+    $scope.Imprimir = function (Id) {
+        alert(Id)
+    }
+
     $scope.QuitarTipoAutorizacion = function (autorizacion) {
 
         var remover = function () {

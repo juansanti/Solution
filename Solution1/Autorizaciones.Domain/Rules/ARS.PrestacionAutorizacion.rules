@@ -264,95 +264,6 @@
 				</RuleStatementAction>
 			</Rule.ThenActions>
 		</Rule>
-		<Rule Priority="0" ReevaluationBehavior="Always" Description="{p1:Null}" Active="True" Name="Cubre 50% en Partos">
-			<Rule.Condition>
-				<RuleExpressionCondition Name="{p1:Null}">
-					<RuleExpressionCondition.Expression>
-						<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-							<ns0:CodeBinaryOperatorExpression.Right>
-								<ns0:CodePrimitiveExpression>
-									<ns0:CodePrimitiveExpression.Value>
-										<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">6</ns1:Int32>
-									</ns0:CodePrimitiveExpression.Value>
-								</ns0:CodePrimitiveExpression>
-							</ns0:CodeBinaryOperatorExpression.Right>
-							<ns0:CodeBinaryOperatorExpression.Left>
-								<ns0:CodePropertyReferenceExpression PropertyName="GrupoId">
-									<ns0:CodePropertyReferenceExpression.TargetObject>
-										<ns0:CodePropertyReferenceExpression PropertyName="SubGrupo">
-											<ns0:CodePropertyReferenceExpression.TargetObject>
-												<ns0:CodePropertyReferenceExpression PropertyName="Prestacion">
-													<ns0:CodePropertyReferenceExpression.TargetObject>
-														<ns0:CodeThisReferenceExpression />
-													</ns0:CodePropertyReferenceExpression.TargetObject>
-												</ns0:CodePropertyReferenceExpression>
-											</ns0:CodePropertyReferenceExpression.TargetObject>
-										</ns0:CodePropertyReferenceExpression>
-									</ns0:CodePropertyReferenceExpression.TargetObject>
-								</ns0:CodePropertyReferenceExpression>
-							</ns0:CodeBinaryOperatorExpression.Left>
-						</ns0:CodeBinaryOperatorExpression>
-					</RuleExpressionCondition.Expression>
-				</RuleExpressionCondition>
-			</Rule.Condition>
-			<Rule.ThenActions>
-				<RuleStatementAction>
-					<RuleStatementAction.CodeDomStatement>
-						<ns0:CodeAssignStatement LinePragma="{p1:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-							<ns0:CodeAssignStatement.Left>
-								<ns0:CodePropertyReferenceExpression PropertyName="Aprobado">
-									<ns0:CodePropertyReferenceExpression.TargetObject>
-										<ns0:CodeThisReferenceExpression />
-									</ns0:CodePropertyReferenceExpression.TargetObject>
-								</ns0:CodePropertyReferenceExpression>
-							</ns0:CodeAssignStatement.Left>
-							<ns0:CodeAssignStatement.Right>
-								<ns0:CodeBinaryOperatorExpression Operator="Multiply">
-									<ns0:CodeBinaryOperatorExpression.Right>
-										<ns0:CodePrimitiveExpression>
-											<ns0:CodePrimitiveExpression.Value>
-												<ns1:Decimal xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0.50</ns1:Decimal>
-											</ns0:CodePrimitiveExpression.Value>
-										</ns0:CodePrimitiveExpression>
-									</ns0:CodeBinaryOperatorExpression.Right>
-									<ns0:CodeBinaryOperatorExpression.Left>
-										<ns0:CodePropertyReferenceExpression PropertyName="Tarifa">
-											<ns0:CodePropertyReferenceExpression.TargetObject>
-												<ns0:CodeThisReferenceExpression />
-											</ns0:CodePropertyReferenceExpression.TargetObject>
-										</ns0:CodePropertyReferenceExpression>
-									</ns0:CodeBinaryOperatorExpression.Left>
-								</ns0:CodeBinaryOperatorExpression>
-							</ns0:CodeAssignStatement.Right>
-						</ns0:CodeAssignStatement>
-					</RuleStatementAction.CodeDomStatement>
-				</RuleStatementAction>
-				<RuleStatementAction>
-					<RuleStatementAction.CodeDomStatement>
-						<ns0:CodeExpressionStatement LinePragma="{p1:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-							<ns0:CodeExpressionStatement.Expression>
-								<ns0:CodeMethodInvokeExpression>
-									<ns0:CodeMethodInvokeExpression.Parameters>
-										<ns0:CodePrimitiveExpression>
-											<ns0:CodePrimitiveExpression.Value>
-												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">Aprobacion 50 % en Partos</ns1:String>
-											</ns0:CodePrimitiveExpression.Value>
-										</ns0:CodePrimitiveExpression>
-									</ns0:CodeMethodInvokeExpression.Parameters>
-									<ns0:CodeMethodInvokeExpression.Method>
-										<ns0:CodeMethodReferenceExpression MethodName="pushRuleAppliance">
-											<ns0:CodeMethodReferenceExpression.TargetObject>
-												<ns0:CodeThisReferenceExpression />
-											</ns0:CodeMethodReferenceExpression.TargetObject>
-										</ns0:CodeMethodReferenceExpression>
-									</ns0:CodeMethodInvokeExpression.Method>
-								</ns0:CodeMethodInvokeExpression>
-							</ns0:CodeExpressionStatement.Expression>
-						</ns0:CodeExpressionStatement>
-					</RuleStatementAction.CodeDomStatement>
-				</RuleStatementAction>
-			</Rule.ThenActions>
-		</Rule>
 		<Rule Priority="0" ReevaluationBehavior="Always" Description="{p1:Null}" Active="True" Name="Prestaciones Femeninas">
 			<Rule.Condition>
 				<RuleExpressionCondition Name="{p1:Null}">
@@ -633,6 +544,581 @@
 								</ns0:CodePropertyReferenceExpression>
 							</ns0:CodeAssignStatement.Right>
 						</ns0:CodeAssignStatement>
+					</RuleStatementAction.CodeDomStatement>
+				</RuleStatementAction>
+				<RuleStatementAction>
+					<RuleStatementAction.CodeDomStatement>
+						<ns0:CodeExpressionStatement LinePragma="{p1:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeExpressionStatement.Expression>
+								<ns0:CodeMethodInvokeExpression>
+									<ns0:CodeMethodInvokeExpression.Parameters>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">Cubre 100% en emergencias</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeMethodInvokeExpression.Parameters>
+									<ns0:CodeMethodInvokeExpression.Method>
+										<ns0:CodeMethodReferenceExpression MethodName="pushRuleAppliance">
+											<ns0:CodeMethodReferenceExpression.TargetObject>
+												<ns0:CodeThisReferenceExpression />
+											</ns0:CodeMethodReferenceExpression.TargetObject>
+										</ns0:CodeMethodReferenceExpression>
+									</ns0:CodeMethodInvokeExpression.Method>
+								</ns0:CodeMethodInvokeExpression>
+							</ns0:CodeExpressionStatement.Expression>
+						</ns0:CodeExpressionStatement>
+					</RuleStatementAction.CodeDomStatement>
+				</RuleStatementAction>
+			</Rule.ThenActions>
+		</Rule>
+		<Rule Priority="0" ReevaluationBehavior="Always" Description="{p1:Null}" Active="True" Name="Atencion Ambulatoria">
+			<Rule.Condition>
+				<RuleExpressionCondition Name="{p1:Null}">
+					<RuleExpressionCondition.Expression>
+						<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeBinaryOperatorExpression.Right>
+								<ns0:CodePrimitiveExpression>
+									<ns0:CodePrimitiveExpression.Value>
+										<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">2</ns1:Int32>
+									</ns0:CodePrimitiveExpression.Value>
+								</ns0:CodePrimitiveExpression>
+							</ns0:CodeBinaryOperatorExpression.Right>
+							<ns0:CodeBinaryOperatorExpression.Left>
+								<ns0:CodePropertyReferenceExpression PropertyName="TipoAutorizacionId">
+									<ns0:CodePropertyReferenceExpression.TargetObject>
+										<ns0:CodePropertyReferenceExpression PropertyName="Autorizacion">
+											<ns0:CodePropertyReferenceExpression.TargetObject>
+												<ns0:CodeThisReferenceExpression />
+											</ns0:CodePropertyReferenceExpression.TargetObject>
+										</ns0:CodePropertyReferenceExpression>
+									</ns0:CodePropertyReferenceExpression.TargetObject>
+								</ns0:CodePropertyReferenceExpression>
+							</ns0:CodeBinaryOperatorExpression.Left>
+						</ns0:CodeBinaryOperatorExpression>
+					</RuleExpressionCondition.Expression>
+				</RuleExpressionCondition>
+			</Rule.Condition>
+			<Rule.ThenActions>
+				<RuleStatementAction>
+					<RuleStatementAction.CodeDomStatement>
+						<ns0:CodeAssignStatement LinePragma="{p1:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeAssignStatement.Left>
+								<ns0:CodePropertyReferenceExpression PropertyName="Aprobado">
+									<ns0:CodePropertyReferenceExpression.TargetObject>
+										<ns0:CodeThisReferenceExpression />
+									</ns0:CodePropertyReferenceExpression.TargetObject>
+								</ns0:CodePropertyReferenceExpression>
+							</ns0:CodeAssignStatement.Left>
+							<ns0:CodeAssignStatement.Right>
+								<ns0:CodeBinaryOperatorExpression Operator="Subtract">
+									<ns0:CodeBinaryOperatorExpression.Right>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">100</ns1:Int32>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeBinaryOperatorExpression.Right>
+									<ns0:CodeBinaryOperatorExpression.Left>
+										<ns0:CodePropertyReferenceExpression PropertyName="Tarifa">
+											<ns0:CodePropertyReferenceExpression.TargetObject>
+												<ns0:CodeThisReferenceExpression />
+											</ns0:CodePropertyReferenceExpression.TargetObject>
+										</ns0:CodePropertyReferenceExpression>
+									</ns0:CodeBinaryOperatorExpression.Left>
+								</ns0:CodeBinaryOperatorExpression>
+							</ns0:CodeAssignStatement.Right>
+						</ns0:CodeAssignStatement>
+					</RuleStatementAction.CodeDomStatement>
+				</RuleStatementAction>
+				<RuleStatementAction>
+					<RuleStatementAction.CodeDomStatement>
+						<ns0:CodeExpressionStatement LinePragma="{p1:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeExpressionStatement.Expression>
+								<ns0:CodeMethodInvokeExpression>
+									<ns0:CodeMethodInvokeExpression.Parameters>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">Afiliado debe pagar una cuota moderada de 100 RD$</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeMethodInvokeExpression.Parameters>
+									<ns0:CodeMethodInvokeExpression.Method>
+										<ns0:CodeMethodReferenceExpression MethodName="pushRuleAppliance">
+											<ns0:CodeMethodReferenceExpression.TargetObject>
+												<ns0:CodeThisReferenceExpression />
+											</ns0:CodeMethodReferenceExpression.TargetObject>
+										</ns0:CodeMethodReferenceExpression>
+									</ns0:CodeMethodInvokeExpression.Method>
+								</ns0:CodeMethodInvokeExpression>
+							</ns0:CodeExpressionStatement.Expression>
+						</ns0:CodeExpressionStatement>
+					</RuleStatementAction.CodeDomStatement>
+				</RuleStatementAction>
+			</Rule.ThenActions>
+		</Rule>
+		<Rule Priority="0" ReevaluationBehavior="Always" Description="{p1:Null}" Active="True" Name="Hospitalizacion">
+			<Rule.Condition>
+				<RuleExpressionCondition Name="{p1:Null}">
+					<RuleExpressionCondition.Expression>
+						<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeBinaryOperatorExpression.Right>
+								<ns0:CodePrimitiveExpression>
+									<ns0:CodePrimitiveExpression.Value>
+										<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">5</ns1:Int32>
+									</ns0:CodePrimitiveExpression.Value>
+								</ns0:CodePrimitiveExpression>
+							</ns0:CodeBinaryOperatorExpression.Right>
+							<ns0:CodeBinaryOperatorExpression.Left>
+								<ns0:CodePropertyReferenceExpression PropertyName="TipoAutorizacionId">
+									<ns0:CodePropertyReferenceExpression.TargetObject>
+										<ns0:CodePropertyReferenceExpression PropertyName="Autorizacion">
+											<ns0:CodePropertyReferenceExpression.TargetObject>
+												<ns0:CodeThisReferenceExpression />
+											</ns0:CodePropertyReferenceExpression.TargetObject>
+										</ns0:CodePropertyReferenceExpression>
+									</ns0:CodePropertyReferenceExpression.TargetObject>
+								</ns0:CodePropertyReferenceExpression>
+							</ns0:CodeBinaryOperatorExpression.Left>
+						</ns0:CodeBinaryOperatorExpression>
+					</RuleExpressionCondition.Expression>
+				</RuleExpressionCondition>
+			</Rule.Condition>
+			<Rule.ThenActions>
+				<RuleStatementAction>
+					<RuleStatementAction.CodeDomStatement>
+						<ns0:CodeAssignStatement LinePragma="{p1:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeAssignStatement.Left>
+								<ns0:CodePropertyReferenceExpression PropertyName="Aprobado">
+									<ns0:CodePropertyReferenceExpression.TargetObject>
+										<ns0:CodeThisReferenceExpression />
+									</ns0:CodePropertyReferenceExpression.TargetObject>
+								</ns0:CodePropertyReferenceExpression>
+							</ns0:CodeAssignStatement.Left>
+							<ns0:CodeAssignStatement.Right>
+								<ns0:CodeBinaryOperatorExpression Operator="Multiply">
+									<ns0:CodeBinaryOperatorExpression.Right>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:Decimal xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0.85</ns1:Decimal>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeBinaryOperatorExpression.Right>
+									<ns0:CodeBinaryOperatorExpression.Left>
+										<ns0:CodePropertyReferenceExpression PropertyName="Tarifa">
+											<ns0:CodePropertyReferenceExpression.TargetObject>
+												<ns0:CodeThisReferenceExpression />
+											</ns0:CodePropertyReferenceExpression.TargetObject>
+										</ns0:CodePropertyReferenceExpression>
+									</ns0:CodeBinaryOperatorExpression.Left>
+								</ns0:CodeBinaryOperatorExpression>
+							</ns0:CodeAssignStatement.Right>
+						</ns0:CodeAssignStatement>
+					</RuleStatementAction.CodeDomStatement>
+				</RuleStatementAction>
+				<RuleStatementAction>
+					<RuleStatementAction.CodeDomStatement>
+						<ns0:CodeExpressionStatement LinePragma="{p1:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeExpressionStatement.Expression>
+								<ns0:CodeMethodInvokeExpression>
+									<ns0:CodeMethodInvokeExpression.Parameters>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">Afiliado debe pagar cuota moderada de un 15% del monto</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeMethodInvokeExpression.Parameters>
+									<ns0:CodeMethodInvokeExpression.Method>
+										<ns0:CodeMethodReferenceExpression MethodName="pushRuleAppliance">
+											<ns0:CodeMethodReferenceExpression.TargetObject>
+												<ns0:CodeThisReferenceExpression />
+											</ns0:CodeMethodReferenceExpression.TargetObject>
+										</ns0:CodeMethodReferenceExpression>
+									</ns0:CodeMethodInvokeExpression.Method>
+								</ns0:CodeMethodInvokeExpression>
+							</ns0:CodeExpressionStatement.Expression>
+						</ns0:CodeExpressionStatement>
+					</RuleStatementAction.CodeDomStatement>
+				</RuleStatementAction>
+			</Rule.ThenActions>
+		</Rule>
+		<Rule Priority="0" ReevaluationBehavior="Always" Description="{p1:Null}" Active="True" Name="Parto Normal">
+			<Rule.Condition>
+				<RuleExpressionCondition Name="{p1:Null}">
+					<RuleExpressionCondition.Expression>
+						<ns0:CodeBinaryOperatorExpression Operator="BooleanAnd" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeBinaryOperatorExpression.Right>
+								<ns0:CodeBinaryOperatorExpression Operator="ValueEquality">
+									<ns0:CodeBinaryOperatorExpression.Right>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">6.1</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeBinaryOperatorExpression.Right>
+									<ns0:CodeBinaryOperatorExpression.Left>
+										<ns0:CodePropertyReferenceExpression PropertyName="SubGrupoId">
+											<ns0:CodePropertyReferenceExpression.TargetObject>
+												<ns0:CodePropertyReferenceExpression PropertyName="Prestacion">
+													<ns0:CodePropertyReferenceExpression.TargetObject>
+														<ns0:CodeThisReferenceExpression />
+													</ns0:CodePropertyReferenceExpression.TargetObject>
+												</ns0:CodePropertyReferenceExpression>
+											</ns0:CodePropertyReferenceExpression.TargetObject>
+										</ns0:CodePropertyReferenceExpression>
+									</ns0:CodeBinaryOperatorExpression.Left>
+								</ns0:CodeBinaryOperatorExpression>
+							</ns0:CodeBinaryOperatorExpression.Right>
+							<ns0:CodeBinaryOperatorExpression.Left>
+								<ns0:CodeBinaryOperatorExpression Operator="ValueEquality">
+									<ns0:CodeBinaryOperatorExpression.Right>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">6</ns1:Int32>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeBinaryOperatorExpression.Right>
+									<ns0:CodeBinaryOperatorExpression.Left>
+										<ns0:CodePropertyReferenceExpression PropertyName="TipoAutorizacionId">
+											<ns0:CodePropertyReferenceExpression.TargetObject>
+												<ns0:CodePropertyReferenceExpression PropertyName="Autorizacion">
+													<ns0:CodePropertyReferenceExpression.TargetObject>
+														<ns0:CodeThisReferenceExpression />
+													</ns0:CodePropertyReferenceExpression.TargetObject>
+												</ns0:CodePropertyReferenceExpression>
+											</ns0:CodePropertyReferenceExpression.TargetObject>
+										</ns0:CodePropertyReferenceExpression>
+									</ns0:CodeBinaryOperatorExpression.Left>
+								</ns0:CodeBinaryOperatorExpression>
+							</ns0:CodeBinaryOperatorExpression.Left>
+						</ns0:CodeBinaryOperatorExpression>
+					</RuleExpressionCondition.Expression>
+				</RuleExpressionCondition>
+			</Rule.Condition>
+			<Rule.ThenActions>
+				<RuleStatementAction>
+					<RuleStatementAction.CodeDomStatement>
+						<ns0:CodeAssignStatement LinePragma="{p1:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeAssignStatement.Left>
+								<ns0:CodePropertyReferenceExpression PropertyName="Aprobado">
+									<ns0:CodePropertyReferenceExpression.TargetObject>
+										<ns0:CodeThisReferenceExpression />
+									</ns0:CodePropertyReferenceExpression.TargetObject>
+								</ns0:CodePropertyReferenceExpression>
+							</ns0:CodeAssignStatement.Left>
+							<ns0:CodeAssignStatement.Right>
+								<ns0:CodePropertyReferenceExpression PropertyName="Tarifa">
+									<ns0:CodePropertyReferenceExpression.TargetObject>
+										<ns0:CodeThisReferenceExpression />
+									</ns0:CodePropertyReferenceExpression.TargetObject>
+								</ns0:CodePropertyReferenceExpression>
+							</ns0:CodeAssignStatement.Right>
+						</ns0:CodeAssignStatement>
+					</RuleStatementAction.CodeDomStatement>
+				</RuleStatementAction>
+				<RuleStatementAction>
+					<RuleStatementAction.CodeDomStatement>
+						<ns0:CodeExpressionStatement LinePragma="{p1:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeExpressionStatement.Expression>
+								<ns0:CodeMethodInvokeExpression>
+									<ns0:CodeMethodInvokeExpression.Parameters>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">Cubre 100% en partos normales</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeMethodInvokeExpression.Parameters>
+									<ns0:CodeMethodInvokeExpression.Method>
+										<ns0:CodeMethodReferenceExpression MethodName="pushRuleAppliance">
+											<ns0:CodeMethodReferenceExpression.TargetObject>
+												<ns0:CodeThisReferenceExpression />
+											</ns0:CodeMethodReferenceExpression.TargetObject>
+										</ns0:CodeMethodReferenceExpression>
+									</ns0:CodeMethodInvokeExpression.Method>
+								</ns0:CodeMethodInvokeExpression>
+							</ns0:CodeExpressionStatement.Expression>
+						</ns0:CodeExpressionStatement>
+					</RuleStatementAction.CodeDomStatement>
+				</RuleStatementAction>
+			</Rule.ThenActions>
+		</Rule>
+		<Rule Priority="0" ReevaluationBehavior="Always" Description="{p1:Null}" Active="True" Name="Parto Cesarea">
+			<Rule.Condition>
+				<RuleExpressionCondition Name="{p1:Null}">
+					<RuleExpressionCondition.Expression>
+						<ns0:CodeBinaryOperatorExpression Operator="BooleanAnd" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeBinaryOperatorExpression.Right>
+								<ns0:CodeBinaryOperatorExpression Operator="ValueEquality">
+									<ns0:CodeBinaryOperatorExpression.Right>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">6.2</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeBinaryOperatorExpression.Right>
+									<ns0:CodeBinaryOperatorExpression.Left>
+										<ns0:CodePropertyReferenceExpression PropertyName="SubGrupoId">
+											<ns0:CodePropertyReferenceExpression.TargetObject>
+												<ns0:CodePropertyReferenceExpression PropertyName="Prestacion">
+													<ns0:CodePropertyReferenceExpression.TargetObject>
+														<ns0:CodeThisReferenceExpression />
+													</ns0:CodePropertyReferenceExpression.TargetObject>
+												</ns0:CodePropertyReferenceExpression>
+											</ns0:CodePropertyReferenceExpression.TargetObject>
+										</ns0:CodePropertyReferenceExpression>
+									</ns0:CodeBinaryOperatorExpression.Left>
+								</ns0:CodeBinaryOperatorExpression>
+							</ns0:CodeBinaryOperatorExpression.Right>
+							<ns0:CodeBinaryOperatorExpression.Left>
+								<ns0:CodeBinaryOperatorExpression Operator="ValueEquality">
+									<ns0:CodeBinaryOperatorExpression.Right>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">6</ns1:Int32>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeBinaryOperatorExpression.Right>
+									<ns0:CodeBinaryOperatorExpression.Left>
+										<ns0:CodePropertyReferenceExpression PropertyName="TipoAutorizacionId">
+											<ns0:CodePropertyReferenceExpression.TargetObject>
+												<ns0:CodePropertyReferenceExpression PropertyName="Autorizacion">
+													<ns0:CodePropertyReferenceExpression.TargetObject>
+														<ns0:CodeThisReferenceExpression />
+													</ns0:CodePropertyReferenceExpression.TargetObject>
+												</ns0:CodePropertyReferenceExpression>
+											</ns0:CodePropertyReferenceExpression.TargetObject>
+										</ns0:CodePropertyReferenceExpression>
+									</ns0:CodeBinaryOperatorExpression.Left>
+								</ns0:CodeBinaryOperatorExpression>
+							</ns0:CodeBinaryOperatorExpression.Left>
+						</ns0:CodeBinaryOperatorExpression>
+					</RuleExpressionCondition.Expression>
+				</RuleExpressionCondition>
+			</Rule.Condition>
+			<Rule.ThenActions>
+				<RuleStatementAction>
+					<RuleStatementAction.CodeDomStatement>
+						<ns0:CodeAssignStatement LinePragma="{p1:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeAssignStatement.Left>
+								<ns0:CodePropertyReferenceExpression PropertyName="Aprobado">
+									<ns0:CodePropertyReferenceExpression.TargetObject>
+										<ns0:CodeThisReferenceExpression />
+									</ns0:CodePropertyReferenceExpression.TargetObject>
+								</ns0:CodePropertyReferenceExpression>
+							</ns0:CodeAssignStatement.Left>
+							<ns0:CodeAssignStatement.Right>
+								<ns0:CodeBinaryOperatorExpression Operator="Multiply">
+									<ns0:CodeBinaryOperatorExpression.Right>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:Decimal xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0.80</ns1:Decimal>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeBinaryOperatorExpression.Right>
+									<ns0:CodeBinaryOperatorExpression.Left>
+										<ns0:CodePropertyReferenceExpression PropertyName="Tarifa">
+											<ns0:CodePropertyReferenceExpression.TargetObject>
+												<ns0:CodeThisReferenceExpression />
+											</ns0:CodePropertyReferenceExpression.TargetObject>
+										</ns0:CodePropertyReferenceExpression>
+									</ns0:CodeBinaryOperatorExpression.Left>
+								</ns0:CodeBinaryOperatorExpression>
+							</ns0:CodeAssignStatement.Right>
+						</ns0:CodeAssignStatement>
+					</RuleStatementAction.CodeDomStatement>
+				</RuleStatementAction>
+				<RuleStatementAction>
+					<RuleStatementAction.CodeDomStatement>
+						<ns0:CodeExpressionStatement LinePragma="{p1:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeExpressionStatement.Expression>
+								<ns0:CodeMethodInvokeExpression>
+									<ns0:CodeMethodInvokeExpression.Parameters>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">Cubre 80% en partos con cesarea</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeMethodInvokeExpression.Parameters>
+									<ns0:CodeMethodInvokeExpression.Method>
+										<ns0:CodeMethodReferenceExpression MethodName="pushRuleAppliance">
+											<ns0:CodeMethodReferenceExpression.TargetObject>
+												<ns0:CodeThisReferenceExpression />
+											</ns0:CodeMethodReferenceExpression.TargetObject>
+										</ns0:CodeMethodReferenceExpression>
+									</ns0:CodeMethodInvokeExpression.Method>
+								</ns0:CodeMethodInvokeExpression>
+							</ns0:CodeExpressionStatement.Expression>
+						</ns0:CodeExpressionStatement>
+					</RuleStatementAction.CodeDomStatement>
+				</RuleStatementAction>
+			</Rule.ThenActions>
+		</Rule>
+		<Rule Priority="0" ReevaluationBehavior="Always" Description="{p1:Null}" Active="True" Name="Cirugia">
+			<Rule.Condition>
+				<RuleExpressionCondition Name="{p1:Null}">
+					<RuleExpressionCondition.Expression>
+						<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeBinaryOperatorExpression.Right>
+								<ns0:CodePrimitiveExpression>
+									<ns0:CodePrimitiveExpression.Value>
+										<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">7</ns1:Int32>
+									</ns0:CodePrimitiveExpression.Value>
+								</ns0:CodePrimitiveExpression>
+							</ns0:CodeBinaryOperatorExpression.Right>
+							<ns0:CodeBinaryOperatorExpression.Left>
+								<ns0:CodePropertyReferenceExpression PropertyName="TipoAutorizacionId">
+									<ns0:CodePropertyReferenceExpression.TargetObject>
+										<ns0:CodePropertyReferenceExpression PropertyName="Autorizacion">
+											<ns0:CodePropertyReferenceExpression.TargetObject>
+												<ns0:CodeThisReferenceExpression />
+											</ns0:CodePropertyReferenceExpression.TargetObject>
+										</ns0:CodePropertyReferenceExpression>
+									</ns0:CodePropertyReferenceExpression.TargetObject>
+								</ns0:CodePropertyReferenceExpression>
+							</ns0:CodeBinaryOperatorExpression.Left>
+						</ns0:CodeBinaryOperatorExpression>
+					</RuleExpressionCondition.Expression>
+				</RuleExpressionCondition>
+			</Rule.Condition>
+			<Rule.ThenActions>
+				<RuleStatementAction>
+					<RuleStatementAction.CodeDomStatement>
+						<ns0:CodeAssignStatement LinePragma="{p1:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeAssignStatement.Left>
+								<ns0:CodePropertyReferenceExpression PropertyName="Aprobado">
+									<ns0:CodePropertyReferenceExpression.TargetObject>
+										<ns0:CodeThisReferenceExpression />
+									</ns0:CodePropertyReferenceExpression.TargetObject>
+								</ns0:CodePropertyReferenceExpression>
+							</ns0:CodeAssignStatement.Left>
+							<ns0:CodeAssignStatement.Right>
+								<ns0:CodeBinaryOperatorExpression Operator="Multiply">
+									<ns0:CodeBinaryOperatorExpression.Right>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:Decimal xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0.90</ns1:Decimal>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeBinaryOperatorExpression.Right>
+									<ns0:CodeBinaryOperatorExpression.Left>
+										<ns0:CodePropertyReferenceExpression PropertyName="Tarifa">
+											<ns0:CodePropertyReferenceExpression.TargetObject>
+												<ns0:CodeThisReferenceExpression />
+											</ns0:CodePropertyReferenceExpression.TargetObject>
+										</ns0:CodePropertyReferenceExpression>
+									</ns0:CodeBinaryOperatorExpression.Left>
+								</ns0:CodeBinaryOperatorExpression>
+							</ns0:CodeAssignStatement.Right>
+						</ns0:CodeAssignStatement>
+					</RuleStatementAction.CodeDomStatement>
+				</RuleStatementAction>
+				<RuleStatementAction>
+					<RuleStatementAction.CodeDomStatement>
+						<ns0:CodeExpressionStatement LinePragma="{p1:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeExpressionStatement.Expression>
+								<ns0:CodeMethodInvokeExpression>
+									<ns0:CodeMethodInvokeExpression.Parameters>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">Cubre 90 % en cirugias</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeMethodInvokeExpression.Parameters>
+									<ns0:CodeMethodInvokeExpression.Method>
+										<ns0:CodeMethodReferenceExpression MethodName="pushRuleAppliance">
+											<ns0:CodeMethodReferenceExpression.TargetObject>
+												<ns0:CodeThisReferenceExpression />
+											</ns0:CodeMethodReferenceExpression.TargetObject>
+										</ns0:CodeMethodReferenceExpression>
+									</ns0:CodeMethodInvokeExpression.Method>
+								</ns0:CodeMethodInvokeExpression>
+							</ns0:CodeExpressionStatement.Expression>
+						</ns0:CodeExpressionStatement>
+					</RuleStatementAction.CodeDomStatement>
+				</RuleStatementAction>
+			</Rule.ThenActions>
+		</Rule>
+		<Rule Priority="0" ReevaluationBehavior="Always" Description="{p1:Null}" Active="True" Name="Apoyo Diagnostico DX">
+			<Rule.Condition>
+				<RuleExpressionCondition Name="{p1:Null}">
+					<RuleExpressionCondition.Expression>
+						<ns0:CodeBinaryOperatorExpression Operator="ValueEquality" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeBinaryOperatorExpression.Right>
+								<ns0:CodePrimitiveExpression>
+									<ns0:CodePrimitiveExpression.Value>
+										<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">8</ns1:Int32>
+									</ns0:CodePrimitiveExpression.Value>
+								</ns0:CodePrimitiveExpression>
+							</ns0:CodeBinaryOperatorExpression.Right>
+							<ns0:CodeBinaryOperatorExpression.Left>
+								<ns0:CodePropertyReferenceExpression PropertyName="TipoAutorizacionId">
+									<ns0:CodePropertyReferenceExpression.TargetObject>
+										<ns0:CodePropertyReferenceExpression PropertyName="Autorizacion">
+											<ns0:CodePropertyReferenceExpression.TargetObject>
+												<ns0:CodeThisReferenceExpression />
+											</ns0:CodePropertyReferenceExpression.TargetObject>
+										</ns0:CodePropertyReferenceExpression>
+									</ns0:CodePropertyReferenceExpression.TargetObject>
+								</ns0:CodePropertyReferenceExpression>
+							</ns0:CodeBinaryOperatorExpression.Left>
+						</ns0:CodeBinaryOperatorExpression>
+					</RuleExpressionCondition.Expression>
+				</RuleExpressionCondition>
+			</Rule.Condition>
+			<Rule.ThenActions>
+				<RuleStatementAction>
+					<RuleStatementAction.CodeDomStatement>
+						<ns0:CodeAssignStatement LinePragma="{p1:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeAssignStatement.Left>
+								<ns0:CodePropertyReferenceExpression PropertyName="Aprobado">
+									<ns0:CodePropertyReferenceExpression.TargetObject>
+										<ns0:CodeThisReferenceExpression />
+									</ns0:CodePropertyReferenceExpression.TargetObject>
+								</ns0:CodePropertyReferenceExpression>
+							</ns0:CodeAssignStatement.Left>
+							<ns0:CodeAssignStatement.Right>
+								<ns0:CodeBinaryOperatorExpression Operator="Multiply">
+									<ns0:CodeBinaryOperatorExpression.Right>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:Decimal xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0.80</ns1:Decimal>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeBinaryOperatorExpression.Right>
+									<ns0:CodeBinaryOperatorExpression.Left>
+										<ns0:CodePropertyReferenceExpression PropertyName="Tarifa">
+											<ns0:CodePropertyReferenceExpression.TargetObject>
+												<ns0:CodeThisReferenceExpression />
+											</ns0:CodePropertyReferenceExpression.TargetObject>
+										</ns0:CodePropertyReferenceExpression>
+									</ns0:CodeBinaryOperatorExpression.Left>
+								</ns0:CodeBinaryOperatorExpression>
+							</ns0:CodeAssignStatement.Right>
+						</ns0:CodeAssignStatement>
+					</RuleStatementAction.CodeDomStatement>
+				</RuleStatementAction>
+				<RuleStatementAction>
+					<RuleStatementAction.CodeDomStatement>
+						<ns0:CodeExpressionStatement LinePragma="{p1:Null}" xmlns:ns0="clr-namespace:System.CodeDom;Assembly=System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+							<ns0:CodeExpressionStatement.Expression>
+								<ns0:CodeMethodInvokeExpression>
+									<ns0:CodeMethodInvokeExpression.Parameters>
+										<ns0:CodePrimitiveExpression>
+											<ns0:CodePrimitiveExpression.Value>
+												<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">Cubre 80% en aproyo Diagnóstico</ns1:String>
+											</ns0:CodePrimitiveExpression.Value>
+										</ns0:CodePrimitiveExpression>
+									</ns0:CodeMethodInvokeExpression.Parameters>
+									<ns0:CodeMethodInvokeExpression.Method>
+										<ns0:CodeMethodReferenceExpression MethodName="pushRuleAppliance">
+											<ns0:CodeMethodReferenceExpression.TargetObject>
+												<ns0:CodeThisReferenceExpression />
+											</ns0:CodeMethodReferenceExpression.TargetObject>
+										</ns0:CodeMethodReferenceExpression>
+									</ns0:CodeMethodInvokeExpression.Method>
+								</ns0:CodeMethodInvokeExpression>
+							</ns0:CodeExpressionStatement.Expression>
+						</ns0:CodeExpressionStatement>
 					</RuleStatementAction.CodeDomStatement>
 				</RuleStatementAction>
 			</Rule.ThenActions>
