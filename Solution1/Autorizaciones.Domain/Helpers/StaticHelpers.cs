@@ -35,7 +35,10 @@ namespace Autorizaciones.Domain.Helpers
 
             if (montoAprobar > balance)
             {
-                rulesApp += string.Format("se aprobó balance restante disponible de {0}", balance);
+                if (balance > 0)
+                {
+                    rulesApp += string.Format("se aprobó balance restante disponible de {0}", balance);
+                }
                 return balance;
             }
             else
