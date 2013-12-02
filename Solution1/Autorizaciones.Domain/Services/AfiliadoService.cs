@@ -12,7 +12,6 @@ namespace Sigs.AutorizacionesOnline.Models
 
         public AfiliadoService(ArsDataContext db)
         {
-            // TODO: Complete member initialization
             this.db = db;
         }
 
@@ -28,7 +27,7 @@ namespace Sigs.AutorizacionesOnline.Models
 
         public decimal BalanceMedicamentosAmbulatorios(Autorizacion a, DateTime fechaAfiliacion, Afiliado afiliado, decimal limite)
         {
-            var fechas = StaticHelpers.GetRangoFechasDeFechaServicio(fechaAfiliacion, a.FechaServicio);
+            var fechas = StaticHelpers.GetRangoAnual(fechaAfiliacion, a.FechaServicio);
 
             var fechaInicial = fechas[0];
             var fechaFinal = fechas[1];
@@ -45,7 +44,7 @@ namespace Sigs.AutorizacionesOnline.Models
 
         public decimal BalanceMedicamentosAltoCosto(Autorizacion a, DateTime fechaAfiliacion, Afiliado afiliado, decimal limite)
         {
-            var fechas = StaticHelpers.GetRangoFechasDeFechaServicio(fechaAfiliacion, a.FechaServicio);
+            var fechas = StaticHelpers.GetRangoAnual(fechaAfiliacion, a.FechaServicio);
 
             AfiliadoService service = new AfiliadoService(new ArsDataContext());
 
@@ -62,7 +61,7 @@ namespace Sigs.AutorizacionesOnline.Models
 
         public decimal Balance(int tipoAutorizacionId, string subGrupoId, Autorizacion a, decimal limite)
         {
-            var fechas = StaticHelpers.GetRangoFechasDeFechaServicio(a.Afiliado.FechaAfiliacion, a.FechaServicio);
+            var fechas = StaticHelpers.GetRangoAnual(a.Afiliado.FechaAfiliacion, a.FechaServicio);
 
             AfiliadoService service = new AfiliadoService(new ArsDataContext());
 
@@ -74,6 +73,8 @@ namespace Sigs.AutorizacionesOnline.Models
                 .Where(p => (p.TipoAutorizacionId == tipoAutorizacionId) && p.Disponible && p.FechaServicio >= fechaInicial && p.FechaServicio <= fechaFinal)
                 .SelectMany(p => p.Prestaciones.Where(q => (subGrupoId == null) || (q.Prestacion.SubGrupoId == subGrupoId) && q.Disponible))
                 .Sum(p => p.Aprobado);
+
+            consumido += a.Prestaciones.Where(p => p.Aprobado > 0).Sum(p => p.Aprobado);
 
             return limite - consumido;
         }

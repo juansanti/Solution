@@ -30,7 +30,7 @@ namespace Sigs.AutorizacionesOnline.Models
 
         public decimal ConsumidoSubGrupo(DateTime fechaServicio, SubGrupo subgrupo)
         {
-            var fechas = StaticHelpers.GetRangoFechasDeFechaServicio(this.FechaAfiliacion, fechaServicio);
+            var fechas = StaticHelpers.GetRangoAnual(this.FechaAfiliacion, fechaServicio);
             var fechaInicial = fechas[0];
             var fechaFinal = fechas[1];
 
