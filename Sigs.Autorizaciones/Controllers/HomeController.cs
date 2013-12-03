@@ -23,6 +23,7 @@ namespace Sigs.AutorizacionesOnline.Controllers
             }
             ViewBag.Usuario = Usuario;
             ViewBag.Prestadora = Prestadora;
+            ViewBag.Pagina = "Autorizar";
 
             return View();
         }

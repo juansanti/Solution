@@ -92,6 +92,8 @@
     <Reference Include="Microsoft.Owin.Security">
       <HintPath>..\Solution1\packages\Microsoft.Owin.Security.2.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Web.WebPages.OAuth, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Solution1\packages\Microsoft.AspNet.WebPages.OAuth.3.0.0\lib\net45\Microsoft.Web.WebPages.OAuth.dll</HintPath>
@@ -215,8 +217,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Imprimir.aspx.cs">
+      <DependentUpon>Imprimir.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Imprimir.aspx.designer.cs">
+      <DependentUpon>Imprimir.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportesDs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportesDs.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="autorizar.html" />
@@ -287,6 +301,7 @@
     <Content Include="Images\nofoto.jpg" />
     <Content Include="img\glyphicons-halflings-white.png" />
     <Content Include="img\glyphicons-halflings.png" />
+    <Content Include="Imprimir.aspx" />
     <Content Include="index.html" />
     <Content Include="js\app.js" />
     <Content Include="js\Consulta.js" />
@@ -314,6 +329,17 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="js\controllers.js" />
+    <Content Include="ReportesDs.xsc">
+      <DependentUpon>ReportesDs.xsd</DependentUpon>
+    </Content>
+    <None Include="ReportesDs.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportesDs.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="ReportesDs.xss">
+      <DependentUpon>ReportesDs.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-2.0.2.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.2.js" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
@@ -378,6 +404,9 @@
       <Project>{20449bd6-52a9-4d19-bb71-b73fcac669ff}</Project>
       <Name>Autorizaciones.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reportes\Autorizacion.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

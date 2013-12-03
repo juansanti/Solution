@@ -5,6 +5,84 @@
 
 
 <div ng-controller="ConsultaCtrl">
+
+    <div class="well">
+        <fieldset>
+            <legend>Filtros de busqueda</legend>
+            <div class="row">
+                <div class="span2" style="text-align: right">
+                    <label>Número:</label>
+                </div>
+                <div class="span2">
+                    <input data-ng-model="AutorizacionId" type="text" class="span2" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2" style="text-align: right">
+                    <label>Carné:</label>
+                </div>
+                <div class="span2">
+                    <input data-ng-model="Carnet" type="text" class="span2" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="span2" style="text-align: right">
+                    <label>Fecha Autorizacion:</label>
+                </div>
+                <div class="span2">
+                    <input data-ng-model="FechaAutorizacionDesde" datepicker type="text" class="span2" />
+                </div>
+                <div class="span1">Hasta </div>
+                <div class="span2">
+                    <input data-ng-model="FechaAutorizacionHasta" datepicker type="text" class="span2" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="span2" style="text-align: right">
+                    <label>Fecha Servicio:</label>
+                </div>
+                <div class="span2">
+                    <input data-ng-model="FachaServicioDesde" datepicker type="text" class="span2" />
+                </div>
+                <div class="span1">Hasta </div>
+                <div class="span2">
+                    <input data-ng-model="FechaServicioHasta" datepicker type="text" class="span2" />
+                </div>
+            </div>
+            <div class="pull-right">
+                <div class="row">
+
+                    <div class="span2">
+                        <input type="button" class="btn" value="Limpiar" ng-click="Limpiar(AutorizacionId, Carnet, FechaAutorizacionDesde, FechaAutorizacionHasta, FachaServicioDesde, FechaServicioHasta)" />
+                    </div>
+
+                    <div class="span2">
+                        <input type="button" class="btn btn-primary" value="Buscar" data-ng-click="Buscar(AutorizacionId, Carnet, FechaAutorizacionDesde, FechaAutorizacionHasta, FachaServicioDesde, FechaServicioHasta)" />
+                    </div>
+
+                </div>
+            </div>
+        </fieldset>
+        
+    </div>
+    <div class="well">
+        <fieldset>
+            <legend>Resultados de consulta</legend>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Número</td>
+                        <td>Carné</td>
+                        <td>Cantidad</td>
+                        <td>Tipo</td>
+                        <td>Monto Solicitado</td>
+                        <td>Monto Aprobado</td>
+                    </tr>
+                </thead>
+            </table>
+        </fieldset>
+    </div>
 </div>
 
 @section Scripts {

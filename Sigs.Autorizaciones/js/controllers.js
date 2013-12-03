@@ -465,27 +465,22 @@ app.controller('AutorizarCtrl', function ($scope, $routeParams, $http, $filter) 
     $('.typeahead').click(function () {
         $(this).select();
     });
+
+    $scope.Imprimir = function (autorizacionId) {
+
+        alert(autorizacionId)
+
+        var builder = reportBuilder();
+
+        builder.reporte = 1;
+        builder.titulo = 'autorización número ' + autorizacionId;
+        builder.parametros.push(new NewReportParameter('autorizacionId', autorizacionId));
+
+        Imprimir(builder);
+    }
 });
 
-app.controller('GeneralCtrl', function ($scope, $http) {
-    $scope.MostrarDesarrollo = false;
-    $scope.DbName = "";
 
-    $http({
-        url: '/Buscar/CheckConnection',
-        method: "GET",
-        headers: { 'Content-Type': 'application/json' }
-    }).success(function (dbName) {
-
-        if (dbName.indexOf("s-dev00") || dbName.indexOf("DevSemma") > 0) {
-            $scope.MostrarDesarrollo = true;
-            $scope.DbName = dbName;
-        }
-        else {
-            MostrarDesarrollo = false;
-        }
-    });
-});
 
 function IsNullOrEmpty(value) {
     return (value == null || value == undefined || value == "");

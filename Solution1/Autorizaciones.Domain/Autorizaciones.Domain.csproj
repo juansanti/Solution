@@ -38,9 +38,13 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Workflow.Activities" />
     <Reference Include="System.Workflow.ComponentModel" />
     <Reference Include="System.Xml.Linq" />
@@ -60,6 +64,7 @@
     <Compile Include="Entities\Cobertura.cs" />
     <Compile Include="Entities\Diagnostico.cs" />
     <Compile Include="Entities\EntityBase.cs" />
+    <Compile Include="Entities\Enumeraciones.cs" />
     <Compile Include="Entities\Enums.cs" />
     <Compile Include="Entities\Experto\IAutorizacionRepository.cs" />
     <Compile Include="Entities\Experto\Justificador.cs" />
@@ -73,6 +78,7 @@
     <Compile Include="Entities\TipoPrestadora.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Entities\UsuariosPrestadoras.cs" />
+    <Compile Include="Helpers\ExportadorReportes.cs" />
     <Compile Include="Helpers\StaticHelpers.cs" />
     <Compile Include="IAutorizacionService.cs" />
     <Compile Include="Moqs\Services\MoqAfiliadoService.cs" />

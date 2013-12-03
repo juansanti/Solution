@@ -12,13 +12,14 @@ namespace Sigs.AutorizacionesOnline.Controllers
 
         public ConsultasController()
         {
-           
+
         }
         [HttpGet]
         public ActionResult Reportes()
         {
             ViewBag.Usuario = Usuario;
             ViewBag.Prestadora = Prestadora;
+            ViewBag.Pagina = "Consulta";
 
             return View();
         }
@@ -38,12 +39,58 @@ namespace Sigs.AutorizacionesOnline.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        public ActionResult Autorizaciones(int? autorizacionId, int? carnet, DateTime? fechaAutorizacionDesde,
+            DateTime? fechaAutorizacionHasta, DateTime? fechaServicioDesde, DateTime? fechaServicioHasta)
+        {
+            bool hasFiltred = false;
+            
+            var prestadoraId = Usuario.UsuariosPrestadoras.First().PrestadoraId;
+            
+            IQueryable<Autorizacion> query = Contextt.Autorizaciones.Where(p => p.PrestadoraId == prestadoraId);
+
+            if (autorizacionId.HasValue)
+            {
+                query = query.Where(p => p.Id == autorizacionId);
+                hasFiltred = true;
+            }
+            else
+            {
+                if (carnet.HasValue)
+                {
+                    query = query.Where(p => p.Afiliado.Id == carnet);
+                    hasFiltred = true;
+                }
+
+                if (fechaAutorizacionDesde.HasValue && fechaAutorizacionHasta.HasValue)
+                {
+                    var hasta = fechaAutorizacionHasta.Value.AddDays(1).AddSeconds(-1);
+                    query = query.Where(p => p.FechaAutorizacion >= fechaAutorizacionDesde && p.FechaAutorizacion <= hasta);
+                    hasFiltred = true;
+                }
+
+                if (fechaServicioDesde.HasValue && fechaServicioHasta.HasValue)
+                {
+                    var hasta = fechaServicioHasta.Value.AddDays(1).AddSeconds(-1);
+                    query = query.Where(p => p.FechaServicio >= fechaAutorizacionDesde && p.FechaAutorizacion <= hasta);
+                    hasFiltred = true;
+                }
+            }
+
+
+            return Json("", JsonRequestBehavior.AllowGet);
+        }
+
         dynamic Project(Autorizacion a)
         {
             return new
             {
-                a.Id,
-                AfiliadoId = a.Afiliado.Id,
+                Numero = a.Id,
+                Carne = a.Afiliado.Id,
+                Cantidad = a.Prestaciones.Count,
+                TipoAutorizacion = a.TipoAutorizacion.Nombre,
+                Solicitado = a.MontoSolicitado,
+                Aprobado = a.MontoAprobado,
                 a.Afiliado.NombreCompleto,
                 a.FechaAutorizacion,
                 a.FechaServicio,

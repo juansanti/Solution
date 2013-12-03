@@ -22,3 +22,56 @@ app.directive('datepicker', function () {
         }
     }
 });
+
+function reportBuilder() {
+    var builder =
+        {
+            titulo: '',
+            reporte: 0,
+            parametros: []
+        };
+
+    return builder;
+}
+
+function NewReportParameter(name, value) {
+    var parametro = {
+        name: name,
+        value: value,
+    };
+
+    return parametro;
+}
+
+function GetUrl(builder) {
+    var url = '/Imprimir.aspx?Reporte=' + builder.reporte
+
+    $.map(builder.parametros, function (p, index) {
+        url += '&' + p.name + '=' + p.value;
+    });
+
+    return url;
+}
+
+function Imprimir(builder) {
+
+    $("#reportWindowUrl").html("<iframe src='' style='width: 95%; height: 700px;'></iframe>");
+
+    var url = GetUrl(builder);
+
+    $("#reportWindowUrl").html("<iframe src='" + url + "' style='width: 95%; height: 700px;'></iframe>");
+
+    $('#reportWindowTitle').html(builder.titulo);
+    $('#reportWindowUrl').attr("src", url);
+
+    $('#reportWindow').css({ width: "900px" });
+    $('#reportWindow').modal("show");
+}
+
+app.controller('NavBarCtrl', function ($scope) {
+    $scope.EstoyActivo = function (name, current) {
+        if (name == current) {
+            return "active"
+        }
+    }
+})

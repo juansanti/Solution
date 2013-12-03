@@ -23,12 +23,12 @@
         </div>
         <div class="container">
         </div>
-        <div class="navbar cont">
+        <div class="navbar cont" data-ng-controller="NavBarCtrl">
             <div class="navbar-inner">
-                <div class="">
+                <div>
                     <ul class="nav">
-                        <li class="active"><a href="/Home/Index">Solicitud de Autorizacion de Servicios</a></li>
-                        <li><a href="/Consultas/Reportes">Reporte de Autorizaciones</a></li>
+                        <li data-ng-class="EstoyActivo('Autorizar', '@ViewBag.Pagina')"><a href="/Home/Index">Solicitud de Autorizacion de Servicios</a></li>
+                        <li  data-ng-class="EstoyActivo('Consulta', '@ViewBag.Pagina')"><a href="/Consultas/Reportes">Reporte de Autorizaciones</a></li>
                     </ul>
                 </div>
             </div>
@@ -49,6 +49,26 @@
         </div>
     </footer>
 
+    
+    <div id="reportWindow" class="modal hide" style="margin: 0 0 0 -470px;">
+
+        <div class="modal-header">
+            <button class="close" type="button" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>
+                <label id="reportWindowTitle"></label>
+            </h3>
+        </div>
+
+        <div style="padding: 10px;">
+            <iframe id="reportWindowUrl" style="width: 100%; height: 550px;"></iframe>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+        </div>
+
+    </div>
+
 </body>
 
 
@@ -63,7 +83,7 @@
 
 <script src="../Scripts/AngularStrap.js"></script>
 <script src="../js/Helpers.js"></script>
-<script src="~/js/app.js"></script>
+<script src="../js/app.js"></script>
 
     @RenderSection("Scripts", false)
 
