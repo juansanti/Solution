@@ -304,7 +304,8 @@ app.controller('AutorizarCtrl', function ($scope, $routeParams, $http, $filter) 
     $scope.Autorizar = function () {
 
         if (!$scope.Autorizacion.FechaServicio) {
-            alert('Favor seleccione la fecha de servicio antes de solicitar');
+            toastr.warning('Favor seleccione la fecha de servicio antes de solicitar');
+            $('#txtFechaServicio').select();
             return;
         }
 
@@ -370,10 +371,6 @@ app.controller('AutorizarCtrl', function ($scope, $routeParams, $http, $filter) 
 
         $scope.Auth = null;
         $scope.ResultadoAnalisis = null;
-    }
-
-    $scope.Imprimir = function (Id) {
-        alert(Id)
     }
 
     $scope.QuitarTipoAutorizacion = function (autorizacion) {
@@ -467,9 +464,6 @@ app.controller('AutorizarCtrl', function ($scope, $routeParams, $http, $filter) 
     });
 
     $scope.Imprimir = function (autorizacionId) {
-
-        alert(autorizacionId)
-
         var builder = reportBuilder();
 
         builder.reporte = 1;

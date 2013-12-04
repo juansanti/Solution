@@ -81,7 +81,7 @@ where a.Id = @autorizacionId</CommandText>
   <xs:element name="ReportesDs" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ReportesDs" msprop:Generator_UserDSName="ReportesDs">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="TbAutorizacion" msprop:Generator_TableClassName="TbAutorizacionDataTable" msprop:Generator_TableVarName="tableTbAutorizacion" msprop:Generator_TablePropName="TbAutorizacion" msprop:Generator_RowDeletingName="TbAutorizacionRowDeleting" msprop:Generator_RowChangingName="TbAutorizacionRowChanging" msprop:Generator_RowEvHandlerName="TbAutorizacionRowChangeEventHandler" msprop:Generator_RowDeletedName="TbAutorizacionRowDeleted" msprop:Generator_UserTableName="TbAutorizacion" msprop:Generator_RowChangedName="TbAutorizacionRowChanged" msprop:Generator_RowEvArgName="TbAutorizacionRowChangeEvent" msprop:Generator_RowClassName="TbAutorizacionRow">
+        <xs:element name="TbAutorizacion" msprop:Generator_TableClassName="TbAutorizacionDataTable" msprop:Generator_TableVarName="tableTbAutorizacion" msprop:Generator_RowChangedName="TbAutorizacionRowChanged" msprop:Generator_TablePropName="TbAutorizacion" msprop:Generator_RowDeletingName="TbAutorizacionRowDeleting" msprop:Generator_RowChangingName="TbAutorizacionRowChanging" msprop:Generator_RowEvHandlerName="TbAutorizacionRowChangeEventHandler" msprop:Generator_RowDeletedName="TbAutorizacionRowDeleted" msprop:Generator_RowClassName="TbAutorizacionRow" msprop:Generator_UserTableName="TbAutorizacion" msprop:Generator_RowEvArgName="TbAutorizacionRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Numero" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnNumero" msprop:Generator_ColumnPropNameInRow="Numero" msprop:Generator_ColumnPropNameInTable="NumeroColumn" msprop:Generator_UserColumnName="Numero" type="xs:int" />
@@ -154,9 +154,5 @@ where a.Id = @autorizacionId</CommandText>
         </xs:element>
       </xs:choice>
     </xs:complexType>
-    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:TbAutorizacion" />
-      <xs:field xpath="mstns:Numero" />
-    </xs:unique>
   </xs:element>
 </xs:schema>

@@ -295,8 +295,11 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\loading.gif" />
     <Content Include="Images\loadingbar.gif" />
     <Content Include="Images\nofoto.jpg" />
     <Content Include="img\glyphicons-halflings-white.png" />
@@ -332,6 +335,7 @@
     <Content Include="ReportesDs.xsc">
       <DependentUpon>ReportesDs.xsd</DependentUpon>
     </Content>
+    <Content Include="Content\toastr.less" />
     <None Include="ReportesDs.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -352,6 +356,8 @@
     <Content Include="Scripts\knockout-3.0.0.debug.js" />
     <Content Include="Scripts\knockout-3.0.0.js" />
     <Content Include="Scripts\models.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\TypeAhead.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -391,6 +397,7 @@
     <Content Include="Scripts\jquery-2.0.3.min.map" />
     <Content Include="Views\Seguridad\IniciarSesion.cshtml" />
     <Content Include="Views\Consultas\Reportes.cshtml" />
+    <Content Include="Scripts\toastr.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -7,7 +7,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web;
-using System.Web.Http;
 using Sigs.AutorizacionesOnline.Models;
 using System.Web.Mvc;
 using Sigs.AutorizacionesOnline.Models.Entities;
@@ -49,6 +48,20 @@ namespace Sigs.AutorizacionesOnline.Controllers
             {
                 throw new InvalidOperationException("No se pudo crear la autorizacion");
             }
+        }
+
+        [HttpPost]
+        public ActionResult Anular(int Id)
+        {
+            var autorizacion = Contextt.Autorizaciones.SingleOrDefault(p => p.Id == Id);
+
+            autorizacion.Disponible = false;
+            autorizacion.UsuarioAnuloId = Usuario.Id;
+            autorizacion.FechaAnulacion = DateTime.Now;
+
+            var rowsAffected = Contextt.SaveChanges();
+
+            return Json(rowsAffected, JsonRequestBehavior.AllowGet);
         }
 
         void Init(Autorizacion a)

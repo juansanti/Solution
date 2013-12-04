@@ -562,13 +562,6 @@ namespace Sigs.AutorizacionesOnline {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TbAutorizacionRow FindByNumero(int Numero) {
-                return ((TbAutorizacionRow)(this.Rows.Find(new object[] {
-                            Numero})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 TbAutorizacionDataTable cln = ((TbAutorizacionDataTable)(base.Clone()));
                 cln.InitVars();
@@ -640,14 +633,11 @@ namespace Sigs.AutorizacionesOnline {
                 base.Columns.Add(this.columnTipoAutorizacion);
                 this.columnCantidad = new global::System.Data.DataColumn("Cantidad", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCantidad);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnNumero}, true));
                 this.columnNumero.AutoIncrement = true;
                 this.columnNumero.AutoIncrementSeed = -1;
                 this.columnNumero.AutoIncrementStep = -1;
                 this.columnNumero.AllowDBNull = false;
                 this.columnNumero.ReadOnly = true;
-                this.columnNumero.Unique = true;
                 this.columnFechaAutorizacion.AllowDBNull = false;
                 this.columnFechaServicio.AllowDBNull = false;
                 this.columnTipoPrestadora.AllowDBNull = false;

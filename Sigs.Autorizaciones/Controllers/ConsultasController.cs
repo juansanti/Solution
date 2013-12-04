@@ -44,9 +44,9 @@ namespace Sigs.AutorizacionesOnline.Controllers
             DateTime? fechaAutorizacionHasta, DateTime? fechaServicioDesde, DateTime? fechaServicioHasta)
         {
             bool hasFiltred = false;
-            
+
             var prestadoraId = Usuario.UsuariosPrestadoras.First().PrestadoraId;
-            
+
             IQueryable<Autorizacion> query = Contextt.Autorizaciones.Where(p => p.PrestadoraId == prestadoraId);
 
             if (autorizacionId.HasValue)
@@ -65,20 +65,26 @@ namespace Sigs.AutorizacionesOnline.Controllers
                 if (fechaAutorizacionDesde.HasValue && fechaAutorizacionHasta.HasValue)
                 {
                     var hasta = fechaAutorizacionHasta.Value.AddDays(1).AddSeconds(-1);
-                    query = query.Where(p => p.FechaAutorizacion >= fechaAutorizacionDesde && p.FechaAutorizacion <= hasta);
+                    query = query.Where(p => p.FechaAutorizacion >= fechaAutorizacionDesde.Value && p.FechaAutorizacion <= hasta);
                     hasFiltred = true;
                 }
 
                 if (fechaServicioDesde.HasValue && fechaServicioHasta.HasValue)
                 {
                     var hasta = fechaServicioHasta.Value.AddDays(1).AddSeconds(-1);
-                    query = query.Where(p => p.FechaServicio >= fechaAutorizacionDesde && p.FechaAutorizacion <= hasta);
+                    query = query.Where(p => p.FechaServicio >= fechaServicioDesde.Value && p.FechaServicio <= hasta);
                     hasFiltred = true;
                 }
             }
 
+            if (!hasFiltred)
+            {
+                var hoy = DateTime.Now.Date;
+                var ahora = DateTime.Now;
+                query = query.Where(p => p.FechaAutorizacion >= hoy && p.FechaAutorizacion <= ahora);
+            }
 
-            return Json("", JsonRequestBehavior.AllowGet);
+            return Json(query.ToList().Select(p => Project(p)), JsonRequestBehavior.AllowGet);
         }
 
         dynamic Project(Autorizacion a)
@@ -92,12 +98,12 @@ namespace Sigs.AutorizacionesOnline.Controllers
                 Solicitado = a.MontoSolicitado,
                 Aprobado = a.MontoAprobado,
                 a.Afiliado.NombreCompleto,
-                a.FechaAutorizacion,
-                a.FechaServicio,
+                FechaAutorizacion = a.FechaAutorizacion.ToShortDateString(),
+                FechaServicio = a.FechaServicio.ToShortDateString(),
                 a.MontoAprobado,
                 a.MontoSolicitado,
                 a.Prestadora.Nombre,
-                a.RulesAppliances,
+                a.Disponible,
                 Prestaciones = a.Prestaciones.Select(p => Project(p))
             };
         }

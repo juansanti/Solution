@@ -38,6 +38,10 @@ namespace Sigs.AutorizacionesOnline.Models
 
         public bool AccidenteLaboral { get; set; }
 
+        public int? UsuarioAnuloId { get; set; }
+
+        public DateTime? FechaAnulacion { get; set; }
+
         [MaxLength(300)]
         public string Comentario { get; set; }
 
@@ -80,5 +84,7 @@ namespace Sigs.AutorizacionesOnline.Models
                 return @"C:\Users\jsanti\Documents\Visual Studio 2012\Projects\Prestamos\Solution\Solution1\Autorizaciones.Domain\Rules\ARS.Autorizaciones.rules";
             }
         }
+
+
     }
 }

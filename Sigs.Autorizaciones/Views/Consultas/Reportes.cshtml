@@ -64,22 +64,53 @@
                 </div>
             </div>
         </fieldset>
-        
+
     </div>
-    <div class="well">
+    <div data-ng-visible="Autorizaciones.length > 0" class="well">
         <fieldset>
             <legend>Resultados de consulta</legend>
-            <table class="table">
+            <table class="table table-striped">
                 <thead>
-                    <tr>
-                        <td>Número</td>
-                        <td>Carné</td>
-                        <td>Cantidad</td>
-                        <td>Tipo</td>
-                        <td>Monto Solicitado</td>
-                        <td>Monto Aprobado</td>
+                    <tr style="font-weight:500;font-size:12px">
+                        <th>Número</th>
+                        <th>Carné</th>
+                        <th>Autorizado en</th>
+                        <th>Servicio en</th>
+                        <th>Cantidad</th>
+                        <th>Tipo</th>
+                        <th>Monto Solicitado</th>
+                        <th>Monto Aprobado</th>
                     </tr>
                 </thead>
+                <tbody>
+                    <tr ng-repeat="a in Autorizaciones" title="{{ a.NombreCompleto }}">
+                        <td>{{ a.Numero }}</td>
+                        <td>{{ a.Carne }}</td>
+                        <td>{{ a.FechaAutorizacion }}</td>
+                        <td>{{ a.FechaServicio }}</td>
+                        <td>{{ a.Cantidad | number }}</td>
+                        <td>{{ a.TipoAutorizacion }}</td>
+                        <td>{{ a.MontoSolicitado | currency}}</td>
+                        <td>{{ a.MontoAprobado | currency }}</td>
+                        <td ng-show="a.Disponible">
+                            <button class="btn btn-success" title="Imprimir" ng-click="Imprimir(a.Numero)"><i class="icon-print icon-white"></i></button>
+                            <button class="btn btn-danger" title="Anular" ng-click="Anular(a.Numero, AutorizacionId, Carnet, FechaAutorizacionDesde, FechaAutorizacionHasta, FachaServicioDesde, FechaServicioHasta)"><i class="icon-remove icon-white"></i></button>
+                        </td>
+                        <td ng-show="!a.Disponible" style="vertical-align: middle; align-content: center">
+                            <label class="label label-important">Anulada </label>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot style="font-weight: bold">
+                    <td>Total</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>{{ TotalAprobado(Autorizaciones) | currency }}</td>
+                </tfoot>
             </table>
         </fieldset>
     </div>
