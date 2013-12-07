@@ -71,15 +71,16 @@
             <legend>Resultados de consulta</legend>
             <table class="table table-striped">
                 <thead>
-                    <tr style="font-weight:500;font-size:12px">
+                    <tr style="font-weight: 500; font-size: 12px">
                         <th>Número</th>
                         <th>Carné</th>
-                        <th>Autorizado en</th>
-                        <th>Servicio en</th>
-                        <th>Cantidad</th>
+                        <th>Autorizado</th>
+                        <th>Servicio</th>
                         <th>Tipo</th>
-                        <th>Monto Solicitado</th>
-                        <th>Monto Aprobado</th>
+                        <th>Cantidad</th>
+                        <th>Solicitado</th>
+                        <th>Aprobado</th>
+                        <th>CoPago</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -88,10 +89,11 @@
                         <td>{{ a.Carne }}</td>
                         <td>{{ a.FechaAutorizacion }}</td>
                         <td>{{ a.FechaServicio }}</td>
-                        <td>{{ a.Cantidad | number }}</td>
                         <td>{{ a.TipoAutorizacion }}</td>
+                        <td>{{ a.Cantidad | number }}</td>
                         <td>{{ a.MontoSolicitado | currency}}</td>
                         <td>{{ a.MontoAprobado | currency }}</td>
+                        <td>{{ a.CoPago | currency }}</td>
                         <td ng-show="a.Disponible">
                             <button class="btn btn-success" title="Imprimir" ng-click="Imprimir(a.Numero)"><i class="icon-print icon-white"></i></button>
                             <button class="btn btn-danger" title="Anular" ng-click="Anular(a.Numero, AutorizacionId, Carnet, FechaAutorizacionDesde, FechaAutorizacionHasta, FachaServicioDesde, FechaServicioHasta)"><i class="icon-remove icon-white"></i></button>
@@ -102,14 +104,17 @@
                     </tr>
                 </tbody>
                 <tfoot style="font-weight: bold">
-                    <td>Total</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>{{ TotalAprobado(Autorizaciones) | currency }}</td>
+                    <tr>
+                        <td>Total</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{TotalServicios(Autorizaciones) | number}}</td>
+                        <td>{{ TotalTarifa(Autorizaciones) | currency }}</td>
+                        <td>{{ TotalAprobado(Autorizaciones) | currency }}</td>
+                        <td>{{ TotalCopago(Autorizaciones) | currency }}</td>
+                    </tr>
                 </tfoot>
             </table>
         </fieldset>

@@ -18,25 +18,10 @@ namespace Sigs.AutorizacionesOnline.Controllers
         public ActionResult Reportes()
         {
             ViewBag.Usuario = Usuario;
-            ViewBag.Prestadora = Prestadora;
+            ViewBag.Prestadora = Usuario.UsuariosPrestadoras.First().Prestadora.Nombre;
             ViewBag.Pagina = "Consulta";
 
             return View();
-        }
-
-        [HttpPost]
-        public ActionResult AutorizacionesDelDia(int usuarioId, DateTime fecha)
-        {
-            var autorizaciones = Contextt.Autorizaciones;
-
-            if (autorizaciones == null)
-            {
-                throw new HttpException(404, string.Format("No hay autorizaciones en fecha {0}", fecha.ToShortDateString()));
-            }
-
-            var result = autorizaciones.Select(p => Project(p));
-
-            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -97,6 +82,7 @@ namespace Sigs.AutorizacionesOnline.Controllers
                 TipoAutorizacion = a.TipoAutorizacion.Nombre,
                 Solicitado = a.MontoSolicitado,
                 Aprobado = a.MontoAprobado,
+                CoPago = a.MontoSolicitado - a.MontoAprobado,
                 a.Afiliado.NombreCompleto,
                 FechaAutorizacion = a.FechaAutorizacion.ToShortDateString(),
                 FechaServicio = a.FechaServicio.ToShortDateString(),

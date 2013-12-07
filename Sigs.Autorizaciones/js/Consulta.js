@@ -78,6 +78,37 @@ app.controller('ConsultaCtrl', function ($scope, $http) {
         Imprimir(builder);
     }
 
+
+    $scope.TotalTarifa = function (autorizaciones) {
+
+        if (!autorizaciones)
+            return;
+
+        var aprobado = 0;
+        $.map(autorizaciones, function (a) {
+
+            if (a.Disponible)
+                aprobado += a.Solicitado;
+        })
+
+        return aprobado;
+    }
+
+    $scope.TotalServicios = function (autorizaciones) {
+
+        if (!autorizaciones)
+            return;
+
+        var aprobado = 0;
+        $.map(autorizaciones, function (a) {
+
+            if (a.Disponible)
+                aprobado += a.Cantidad;
+        })
+
+        return aprobado;
+    }
+
     $scope.TotalAprobado = function (autorizaciones) {
 
         if (!autorizaciones)
@@ -91,5 +122,20 @@ app.controller('ConsultaCtrl', function ($scope, $http) {
         })
 
         return aprobado;
+    }
+
+    $scope.TotalCopago = function (autorizaciones) {
+
+        if (!autorizaciones)
+            return;
+
+        var monto = 0;
+        $.map(autorizaciones, function (a) {
+
+            if (a.Disponible)
+                monto += a.CoPago;
+        })
+
+        return monto;
     }
 });

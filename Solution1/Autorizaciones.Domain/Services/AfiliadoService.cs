@@ -25,40 +25,6 @@ namespace Sigs.AutorizacionesOnline.Models
             db = new ArsDataContext();
         }
 
-        public decimal BalanceMedicamentosAmbulatorios(Autorizacion a, DateTime fechaAfiliacion, Afiliado afiliado, decimal limite)
-        {
-            var fechas = StaticHelpers.GetRangoAnual(fechaAfiliacion, a.FechaServicio);
-
-            var fechaInicial = fechas[0];
-            var fechaFinal = fechas[1];
-
-            var consumido = afiliado
-                .Autorizaciones
-                .Where(p => p.TipoAutorizacionId == 12 && p.Disponible && p.FechaServicio >= fechaInicial && p.FechaServicio <= fechaFinal)
-                .SelectMany(p => p.Prestaciones)
-                .Where(p => p.Prestacion.SubGrupoId == "12.1" && p.Disponible)
-                .Sum(p => p.Aprobado);
-
-            return limite - consumido;
-        }
-
-        public decimal BalanceMedicamentosAltoCosto(Autorizacion a, DateTime fechaAfiliacion, Afiliado afiliado, decimal limite)
-        {
-            var fechas = StaticHelpers.GetRangoAnual(fechaAfiliacion, a.FechaServicio);
-
-            AfiliadoService service = new AfiliadoService(new ArsDataContext());
-
-            var fechaInicial = fechas[0];
-            var fechaFinal = fechas[1];
-
-            var consumido = afiliado.Autorizaciones.Where(p => p.TipoAutorizacionId == 12 && p.Disponible && p.FechaServicio >= fechaInicial && p.FechaServicio <= fechaFinal)
-                .SelectMany(p => p.Prestaciones)
-                .Where(p => p.Prestacion.SubGrupoId == "12.2" && p.Disponible)
-                .Sum(p => p.Aprobado);
-
-            return limite - consumido;
-        }
-
         public decimal Balance(int tipoAutorizacionId, string subGrupoId, Autorizacion a, decimal limite)
         {
             var fechas = StaticHelpers.GetRangoAnual(a.Afiliado.FechaAfiliacion, a.FechaServicio);
@@ -76,7 +42,7 @@ namespace Sigs.AutorizacionesOnline.Models
 
             consumido += a.Prestaciones.Where(p => p.Aprobado > 0).Sum(p => p.Aprobado);
 
-            return limite - consumido;
+            return limite - consumido < 0 ? 0 : limite - consumido;
         }
     }
 }

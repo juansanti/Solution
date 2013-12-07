@@ -9,18 +9,30 @@
 </head>
 <body>
     <div class="container">
-        @using (Html.BeginForm("IniciarSesion", "Seguridad", FormMethod.Post))
-        {
-            <form class="form-signin">
-                <h2 class="form-signin-heading ">Introduzca sus credenciales</h2>
+        <h3> Autorizaciones de servicios de salud </h3>
+    </div>
+    <div class="container">
 
-                <input type="text" class="input-block-level" name="UserName" placeholder="Usuario o Email">
+        <div class="span4" style="text-align:center">
+            <h1>ARS IA</h1>
+            <img src="~/Images/logo.jpg" style="vertical-align:middle" />
+            <h5>"La salud del pueblo"</h5>
+        </div>
+        <div class="span4 well pull-rigth">
+            @using (Html.BeginForm("IniciarSesion", "Seguridad", FormMethod.Post))
+            {
+                <form class="form-signin">
+                    <h2 class="form-signin-heading ">Credenciales</h2>
 
-                <input type="password" class="input-block-level" name="Password" placeholder="Contraseña">
+                    <input type="text" class="input-block-level" name="UserName" placeholder="Usuario o Email">
 
-                <button class="btn btn-large btn-primary" type="submit">Iniciar Sesión</button>
-            </form>
-        }
+                    <input type="password" class="input-block-level" name="Password" placeholder="Contraseña">
+
+                    <button class="btn btn-large btn-primary" type="submit">Iniciar Sesión</button>
+                </form>
+            }
+        </div>
+
     </div>
 </body>
 </html>

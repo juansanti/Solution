@@ -39,6 +39,10 @@ namespace Autorizaciones.Domain.Helpers
                 {
                     rulesApp += string.Format("se aprobó balance restante disponible de {0}", balance);
                 }
+                else
+                {
+                    rulesApp += string.Format("El afiliado ya ha consumido su balance disponible." );
+                }
                 return balance;
             }
             else

@@ -17,11 +17,6 @@ namespace Sigs.AutorizacionesOnline.Controllers
             Contextt = new ArsDataContext();
         }
 
-        public string Prestadora
-        {
-            get;
-            set;
-        }
 
         public Usuario Usuario
         {

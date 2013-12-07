@@ -313,6 +313,8 @@ namespace Sigs.AutorizacionesOnline {
             
             private global::System.Data.DataColumn columnCantidad;
             
+            private global::System.Data.DataColumn columnCarnet;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TbAutorizacionDataTable() {
@@ -484,6 +486,14 @@ namespace Sigs.AutorizacionesOnline {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CarnetColumn {
+                get {
+                    return this.columnCarnet;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -554,7 +564,8 @@ namespace Sigs.AutorizacionesOnline {
                         ReglasAutorizacion,
                         ReglasPrestacion,
                         TipoAutorizacion,
-                        Cantidad};
+                        Cantidad,
+                        null};
                 rowTbAutorizacionRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTbAutorizacionRow);
                 return rowTbAutorizacionRow;
@@ -594,6 +605,7 @@ namespace Sigs.AutorizacionesOnline {
                 this.columnReglasPrestacion = base.Columns["ReglasPrestacion"];
                 this.columnTipoAutorizacion = base.Columns["TipoAutorizacion"];
                 this.columnCantidad = base.Columns["Cantidad"];
+                this.columnCarnet = base.Columns["Carnet"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -633,6 +645,8 @@ namespace Sigs.AutorizacionesOnline {
                 base.Columns.Add(this.columnTipoAutorizacion);
                 this.columnCantidad = new global::System.Data.DataColumn("Cantidad", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCantidad);
+                this.columnCarnet = new global::System.Data.DataColumn("Carnet", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCarnet);
                 this.columnNumero.AutoIncrement = true;
                 this.columnNumero.AutoIncrementSeed = -1;
                 this.columnNumero.AutoIncrementStep = -1;
@@ -659,6 +673,11 @@ namespace Sigs.AutorizacionesOnline {
                 this.columnTipoAutorizacion.AllowDBNull = false;
                 this.columnTipoAutorizacion.MaxLength = 255;
                 this.columnCantidad.AllowDBNull = false;
+                this.columnCarnet.AutoIncrement = true;
+                this.columnCarnet.AutoIncrementSeed = -1;
+                this.columnCarnet.AutoIncrementStep = -1;
+                this.columnCarnet.AllowDBNull = false;
+                this.columnCarnet.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1013,6 +1032,17 @@ namespace Sigs.AutorizacionesOnline {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Carnet {
+                get {
+                    return ((int)(this[this.tableTbAutorizacion.CarnetColumn]));
+                }
+                set {
+                    this[this.tableTbAutorizacion.CarnetColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsAfiliadoNull() {
                 return this.IsNull(this.tableTbAutorizacion.AfiliadoColumn);
             }
@@ -1248,6 +1278,7 @@ namespace Sigs.AutorizacionesOnline.ReportesDsTableAdapters {
             tableMapping.ColumnMappings.Add("ReglasPrestacion", "ReglasPrestacion");
             tableMapping.ColumnMappings.Add("TipoAutorizacion", "TipoAutorizacion");
             tableMapping.ColumnMappings.Add("Cantidad", "Cantidad");
+            tableMapping.ColumnMappings.Add("Carnet", "Carnet");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1273,6 +1304,7 @@ namespace Sigs.AutorizacionesOnline.ReportesDsTableAdapters {
 		af.Nombres + ' ' + isnull(af.Apellidos, '') Afiliado,
 		af.NSS,
 		af.Sexo,
+                                      Carnet = af.Id,
 		datediff(year, af.FechaNacimiento, a.FechaServicio) Edad,
 		cb.SIMON Codigo,
 		cb.Nombre Cobertura,

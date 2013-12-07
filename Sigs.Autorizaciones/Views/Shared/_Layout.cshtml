@@ -14,7 +14,15 @@
 </head>
 <body class="container">
     <div class="masthead well">
-        <h3 class="muted">Autorizacion ARS Ejemplo</h3>
+        <h3 class="muted" style="text-align: center">Autorizaciones de servicios de salud</h3>
+        <div style="text-align: center">
+            <span class="muted">
+                <span style="font-size: 15px; font-weight: bold" class="muted">ARS IA</span>
+                "La salud del pueblo"</span>
+        </div>
+        <div class="pull-left">
+            <h3 class="muted">@ViewBag.Prestadora  </h3>
+        </div>
         <div class="pull-right">
             @using (@Html.BeginForm("CerrarSesion", "Seguridad", FormMethod.Get, new { Class = "form-inline" }))
             {
@@ -50,7 +58,7 @@
         </div>
     </footer>
 
-    
+
     <div id="reportWindow" class="modal hide" style="margin: 0 0 0 -470px;">
 
         <div class="modal-header">
@@ -87,7 +95,7 @@
 <script src="../js/Helpers.js"></script>
 <script src="../js/app.js"></script>
 
-    @RenderSection("Scripts", false)
+@RenderSection("Scripts", false)
 
 </html>
 

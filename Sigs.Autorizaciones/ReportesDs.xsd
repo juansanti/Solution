@@ -21,6 +21,7 @@
 		af.Nombres + ' ' + isnull(af.Apellidos, '') Afiliado,
 		af.NSS,
 		af.Sexo,
+                                      Carnet = af.Id,
 		datediff(year, af.FechaNacimiento, a.FechaServicio) Edad,
 		cb.SIMON Codigo,
 		cb.Nombre Cobertura,
@@ -70,6 +71,7 @@ where a.Id = @autorizacionId</CommandText>
               <Mapping SourceColumn="ReglasPrestacion" DataSetColumn="ReglasPrestacion" />
               <Mapping SourceColumn="TipoAutorizacion" DataSetColumn="TipoAutorizacion" />
               <Mapping SourceColumn="Cantidad" DataSetColumn="Cantidad" />
+              <Mapping SourceColumn="Carnet" DataSetColumn="Carnet" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -81,7 +83,7 @@ where a.Id = @autorizacionId</CommandText>
   <xs:element name="ReportesDs" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ReportesDs" msprop:Generator_UserDSName="ReportesDs">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="TbAutorizacion" msprop:Generator_TableClassName="TbAutorizacionDataTable" msprop:Generator_TableVarName="tableTbAutorizacion" msprop:Generator_RowChangedName="TbAutorizacionRowChanged" msprop:Generator_TablePropName="TbAutorizacion" msprop:Generator_RowDeletingName="TbAutorizacionRowDeleting" msprop:Generator_RowChangingName="TbAutorizacionRowChanging" msprop:Generator_RowEvHandlerName="TbAutorizacionRowChangeEventHandler" msprop:Generator_RowDeletedName="TbAutorizacionRowDeleted" msprop:Generator_RowClassName="TbAutorizacionRow" msprop:Generator_UserTableName="TbAutorizacion" msprop:Generator_RowEvArgName="TbAutorizacionRowChangeEvent">
+        <xs:element name="TbAutorizacion" msprop:Generator_TableClassName="TbAutorizacionDataTable" msprop:Generator_TableVarName="tableTbAutorizacion" msprop:Generator_TablePropName="TbAutorizacion" msprop:Generator_RowDeletingName="TbAutorizacionRowDeleting" msprop:Generator_RowChangingName="TbAutorizacionRowChanging" msprop:Generator_RowEvHandlerName="TbAutorizacionRowChangeEventHandler" msprop:Generator_RowDeletedName="TbAutorizacionRowDeleted" msprop:Generator_UserTableName="TbAutorizacion" msprop:Generator_RowChangedName="TbAutorizacionRowChanged" msprop:Generator_RowEvArgName="TbAutorizacionRowChangeEvent" msprop:Generator_RowClassName="TbAutorizacionRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Numero" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnNumero" msprop:Generator_ColumnPropNameInRow="Numero" msprop:Generator_ColumnPropNameInTable="NumeroColumn" msprop:Generator_UserColumnName="Numero" type="xs:int" />
@@ -149,6 +151,7 @@ where a.Id = @autorizacionId</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Cantidad" msprop:Generator_ColumnVarNameInTable="columnCantidad" msprop:Generator_ColumnPropNameInRow="Cantidad" msprop:Generator_ColumnPropNameInTable="CantidadColumn" msprop:Generator_UserColumnName="Cantidad" type="xs:int" />
+              <xs:element name="Carnet" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnCarnet" msprop:Generator_ColumnPropNameInRow="Carnet" msprop:Generator_ColumnPropNameInTable="CarnetColumn" msprop:Generator_UserColumnName="Carnet" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

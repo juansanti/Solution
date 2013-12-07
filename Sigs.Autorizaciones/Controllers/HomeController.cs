@@ -13,16 +13,8 @@ namespace Sigs.AutorizacionesOnline.Controllers
         {
             var up = Usuario.UsuariosPrestadoras.FirstOrDefault();
 
-            if (up != null)
-            {
-                Prestadora = up.Prestadora.Nombre;
-            }
-            else
-            {
-                Prestadora = "Admin";
-            }
             ViewBag.Usuario = Usuario;
-            ViewBag.Prestadora = Prestadora;
+            ViewBag.Prestadora = Usuario.UsuariosPrestadoras.First().Prestadora.Nombre;
             ViewBag.Pagina = "Autorizar";
 
             return View();
