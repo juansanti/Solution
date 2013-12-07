@@ -93,15 +93,5 @@ namespace WinformRuleEditor
             return File.Exists(path);
         }
 
-        private void btnExaminar_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.InitialDirectory = @"C:\Users\jsanti\Documents\Visual Studio 2012\Projects\Prestamos\Solution\Solution1\Autorizaciones.Domain\Rules\";
-
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                textBox1.Text = openFileDialog1.FileName;
-            }
-        }
     }
 }

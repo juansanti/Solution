@@ -108,7 +108,7 @@ namespace Autorizaciones.Domain.Entities.Experto
         public JustificacionResult NoCubreNada(Autorizacion a)
         {
             JustificacionResult r = new JustificacionResult();
-            r.resumen = string.Format("Lo sentimos, no podemos cubrir {0} {1} en ninguno de los servicios solicitados. a continuación detallan las razones", adjetivo(a.Afiliado), a.Afiliado.NombreCompleto);
+            r.resumen = string.Format("Lo sentimos, no podemos cubrir {0} {1} en ninguno de los servicios solicitados. A continuación mas detalle", adjetivo(a.Afiliado), a.Afiliado.NombreCompleto);
 
             if (!string.IsNullOrEmpty(a.RulesAppliances))
                 r.detalle.Add(a.RulesAppliances);
@@ -155,7 +155,7 @@ namespace Autorizaciones.Domain.Entities.Experto
             {
                 if (!string.IsNullOrEmpty(p.RulesAppliances))
                 {
-                    detalle.Add(string.Format("({0}) {1} ({3}) ({4}), ({2})", p.Cantidad, p.Prestacion.Cobertura.Nombre, p.RulesAppliances, p.Cantidad * p.Tarifa, p.Cantidad * p.Aprobado));
+                    detalle.Add(string.Format("({0}) {1} en {5} ({3}) ({4}), ({2})", p.Cantidad, p.Prestacion.Cobertura.Nombre, p.RulesAppliances, p.Cantidad * p.Tarifa, p.Cantidad * p.Aprobado, p.Prestacion.SubGrupo.Nombre));
                 }
             }
 
@@ -184,6 +184,8 @@ namespace Autorizaciones.Domain.Entities.Experto
                     p.Cantidad,
                     p.Tarifa,
                     p.Aprobado,
+                    Simon = p.Prestacion.Cobertura.SIMON,
+                    Nombre = p.Prestacion.Cobertura.Nombre,
                     CoPago = p.Tarifa - p.Aprobado,
                     p.RulesAppliances,
                     p.UsuarioId

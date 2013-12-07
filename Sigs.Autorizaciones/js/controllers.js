@@ -17,7 +17,6 @@ app.controller('AutorizarCtrl', function ($scope, $routeParams, $http, $filter) 
     };
 
     $scope.TiposAutorizacion = [
-       { Id: 0, Nombre: "Complementario" },
        { Id: 1, Nombre: "Prevención y Promoción" },
        { Id: 2, Nombre: "Atención Ambulatoria" },
        { Id: 3, Nombre: "Servicios Odontológicos" },
@@ -34,11 +33,11 @@ app.controller('AutorizarCtrl', function ($scope, $routeParams, $http, $filter) 
 
     $scope.CreateAfiliado = function (a) {
         var af = {
-            Id: 0,
+            Id: null,
             Carnet: 0,
             Nombre: "",
-            Edad: 0,
-            Sexo: 0,
+            Edad: "",
+            Sexo: "",
             MDMedicamentos: 0,
             PuedeAutoriar: false,
             Impedimentos: "",
@@ -57,8 +56,43 @@ app.controller('AutorizarCtrl', function ($scope, $routeParams, $http, $filter) 
             af.Foto = a.Foto
         }
 
+        $scope.FotoAfiliado = GetFotoAfiliado();
+
         return af;
     }
+
+    $scope.FotoAfiliado;
+
+    var GetFotoAfiliado = function () {
+        var foto = "../Images/nofoto.jpg";
+
+        if (!$scope.Autorizacion) {
+            return foto;
+        }
+
+        if ($scope.Autorizacion.Afiliado) {
+            if ($scope.Autorizacion.Afiliado.Foto) {
+                foto = $scope.Autorizacion.Afiliado.Foto;
+            }
+        }
+        return foto;
+    }
+
+    $scope.ClaseDisponible = function () {
+        var clase = 'label';
+        if ($scope.Autorizacion) {
+            if ($scope.Autorizacion.Afiliado.Disponible) {
+                clase = 'label label-success'
+            }
+            else {
+                clase = 'label label-important';
+            }
+        }
+
+        return clase;
+    }
+
+    $scope.FotoAfiliado = GetFotoAfiliado();
 
     $scope.CreateAutorizacion = function (a) {
         var aut = {
@@ -262,44 +296,56 @@ app.controller('AutorizarCtrl', function ($scope, $routeParams, $http, $filter) 
 
     $scope.BuscarAfiliado = function () {
 
+        var carne = $scope.carneBuscar;
+
+        if (!carne) {
+            return;
+        }
+
+        if (isNaN(carne)) {
+            toastr.error('el carné del afiliado debe ser un número')
+            return;
+        }
+
         $scope.BuscandoAfiliado = true;
 
         $http({
             url: '/Afiliado/Get/',
             method: "POST",
-            data: { id: $scope.Autorizacion.Afiliado.Id }
+            data: { id: carne }
         }).success(function (data) {
             $scope.DisponibleInicial = data.MDMedicamentos;
             $scope.OldCarnet = data.Carnet;
             $scope.Autorizacion.Prestaciones = [];
             $scope.Autorizacion.Afiliado = data
 
-            var args = {
-                afiliadoId: data.Id,
-                tipoAutorizacionId: 12
-            }
-
-            $http({
-                url: '/Buscar/GetPrestaciones',
-                method: "POST",
-                data: args
-            }).success(function (data) {
-                $scope.Prestaciones = data;
-
-                x = $scope.Prestaciones;
-
-                $scope.BuscandoAfiliado = false;
-            }).error(function (data, status, headers, config) {
-                alert('No hay prestaciones disponibles para el afiliado');
-                $scope.BuscandoAfiliado = false;
-            });
+            $scope.BuscandoAfiliado = false;
+            $scope.FotoAfiliado = GetFotoAfiliado();
 
         }).error(function (data, status, headers, config) {
+            toastr.error('no se encontró ningún afiliado con el carné ' + carne);
             $scope.DisponibleInicial = 0;
             $scope.Autorizacion.Afiliado = $scope.CreateAfiliado();
             $scope.BuscandoAfiliado = false;
+            $scope.FotoAfiliado = GetFotoAfiliado();
         });
     }
+
+    $scope.CargandoPrestaciones = true;
+
+    $http({
+        url: '/Buscar/GetPrestaciones',
+        method: "POST"
+    }).success(function (data) {
+        $scope.Prestaciones = data;
+
+        x = $scope.Prestaciones;
+        $scope.CargandoPrestaciones = false;
+
+    }).error(function (data, status, headers, config) {
+        toastr.error('Ocurrió un problema al cargar las prestaciones del plan básico de salud');
+        $scope.CargandoPrestaciones = false;
+    });
 
     $scope.Autorizar = function () {
 
@@ -338,6 +384,46 @@ app.controller('AutorizarCtrl', function ($scope, $routeParams, $http, $filter) 
         });
     }
 
+    var getPrestacionesAnalizadas = function () {
+        var prestaciones = [];
+        if (!$scope.ResultadoAnalisis) {
+            return prestaciones;
+        }
+        else if ($scope.ResultadoAnalisis.Autorizacion) {
+            prestaciones = $scope.ResultadoAnalisis.Autorizacion.Prestaciones;
+        }
+        return prestaciones;
+    }
+
+
+
+    $scope.TotalTarifaAnalisis = function () {
+        var total = 0;
+        $.map(getPrestacionesAnalizadas(), function (o) {
+            total += o.Tarifa;
+        });
+
+        return total;
+    }
+
+    $scope.TotalAprobadoAnalisis = function () {
+        var total = 0;
+        $.map(getPrestacionesAnalizadas(), function (o) {
+            total += o.Aprobado;
+        });
+
+        return total;
+    }
+
+    $scope.TotalCopagoAnalisis = function () {
+        var total = 0;
+        $.map(getPrestacionesAnalizadas(), function (o) {
+            total += o.CoPago;
+        });
+
+        return total;
+    }
+
     $scope.PersistirAutorizacion = function () {
 
         if (!$scope.ResultadoAnalisis.Procede) {
@@ -371,6 +457,7 @@ app.controller('AutorizarCtrl', function ($scope, $routeParams, $http, $filter) 
 
         $scope.Auth = null;
         $scope.ResultadoAnalisis = null;
+        $scope.FotoAfiliado = GetFotoAfiliado();
     }
 
     $scope.QuitarTipoAutorizacion = function (autorizacion) {
@@ -462,6 +549,8 @@ app.controller('AutorizarCtrl', function ($scope, $routeParams, $http, $filter) 
     $('.typeahead').click(function () {
         $(this).select();
     });
+
+
 
     $scope.Imprimir = function (autorizacionId) {
         var builder = reportBuilder();

@@ -12,18 +12,25 @@ namespace Sigs.Expertos
 {
     public class MotorInferencia
     {
+        /// <summary>
+        /// Este método es el encargado de tomar el modelo y aprlicar las reglas.
+        /// </summary>
+        /// <param name="autorizacion"></param>
+        /// <returns></returns>
         public Autorizacion Procesar(Autorizacion autorizacion)
         {
             RuleEngineRepository ruleRepository = new RuleEngineRepository();
 
             var autorizacionesRuleSet = ruleRepository.GetRuleSetFromFile(Autorizacion.RuleSetFileName);
 
+            //Evalua las reglas de autorizaciones
             AplicarReglas<Autorizacion>(typeof(Autorizacion), autorizacion, autorizacionesRuleSet);
 
             var prestacionesRuleSet = ruleRepository.GetRuleSetFromFile(PrestacionAutorizacion.RuleSetFileName);
 
             foreach (var p in autorizacion.Prestaciones)
             {
+                //Evalua las reglas de las prestaciones
                 AplicarReglas<PrestacionAutorizacion>(typeof(PrestacionAutorizacion), p, prestacionesRuleSet);
             }
 
@@ -32,7 +39,7 @@ namespace Sigs.Expertos
 
         public void AplicarReglas<T>(Type type, T obj, RuleSet ruleSet)
         {
-            // Execute the rules and print the entity's properties
+            // Ejecuta las reglas y aplica los cambios correspondientes a la entidad
             RuleValidation validation = new RuleValidation(type, null);
 
             RuleExecution execution = new RuleExecution(validation, obj);

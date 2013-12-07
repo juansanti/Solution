@@ -56,7 +56,7 @@
   <ItemGroup>
     <Compile Include="AccountModels.cs" />
     <Compile Include="AutorizacionInitializer.cs" />
-    <Compile Include="AutorizacionService.cs" />
+    <Compile Include="Services\AutorizacionService.cs" />
     <Compile Include="AutorizacionValidator.cs" />
     <Compile Include="Context\ArsDataContext.cs" />
     <Compile Include="Entities\Afiliado.cs" />

@@ -2,170 +2,207 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container" ng-controller="AutorizarCtrl">
-
-    <div class="container">
-
-        <div class="row">
-            <div class="span2">
-                <img alt="afiliado" src="../Images/nofoto.jpg">
-            </div>
-            <div class="span8">
-                <div class="row">
-                    <div class="span2">
-                        <div class="input-append">
-                            <input type="text" placeholder="Número de Afiliado" ng-model="Autorizacion.Afiliado.Id" />
-                            <span ng-click="BuscarAfiliado()" ng-disabled="BuscandoAfiliado" class="btn btn-info add-on">Buscar
+    <div class="row">
+        <div class="span2">
+            <div class="input-append">
+                <input type="text" placeholder="Carné de Afiliado" ng-model="carneBuscar" on-enter="BuscarAfiliado()" />
+                <span ng-click="BuscarAfiliado()" ng-disabled="BuscandoAfiliado || CargandoPrestaciones" class="btn btn-info add-on">Buscar
                                 <i class="icon-search icon-white"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="span1">Nombre:</div>
-                    <div class="span7">
-                        <label>{{ Autorizacion.Afiliado.Nombre }}</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="span1">Sexo:</div>
-                    <div class="span7">
-                        <label>{{Autorizacion.Afiliado.Sexo}}</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="span1">Edad:</div>
-                    <div class="span7">
-                        <label>{{Autorizacion.Afiliado.Edad}}</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="span1">Fecha:</div>
-                    <div class="span7">
-                        <input id="txtFechaServicio" type="text" datepicker ng-model="Autorizacion.FechaServicio" max-date="Today" />
-                    </div>
-                </div>
-            </div>
-            <div class="span2" ng-show="BuscandoAfiliado" style="justify-content:center">
-                <img src="~/Images/loading.gif" />
-            </div>
-        </div>
-
-        <div class="SeleccionAutorizacion" ng-show="!TipoAutorizacion && Autorizacion.Afiliado.PuedeAutoriar && Prestaciones.length > 0">
-            <h2>Porfavor seleccione el Tipo de Autorización a continuación</h2>
-            <ul class="nav nav-pills nav-stacked">
-                <li ng-repeat="t in TiposAutorizacion" ng-click="SelectionarTipoAutorizacion(t)"><a>{{t.Id + ' ' + t.Nombre }} </a></li>
-
-            </ul>
-        </div>
-        <div ng-show="Autorizacion.Afiliado.PuedeAutoriar &&  Prestaciones.length > 0 && TipoAutorizacion" class="autorizacionBody">
-            <h3>Autorización de <strong>{{ TipoAutorizacion.Nombre }} </strong></h3>
-            <input type="button" value="Cambiar" class="btn" ng-click="QuitarTipoAutorizacion(Autorizacion)" />
-            <div>
-                <div class="well well-small form-inline">
-                    <table>
-                        <tr>
-                            <td>Código</td>
-                            <td>Nombre</td>
-                            <td>Cantidad</td>
-                            <td>Costo</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input id="txtCoberturaId" type="text" ng-model="Prestacion.CoberturaId" class="input" style="width: 50px" readonly />
-                            </td>
-                            <td style="width: 600px">
-                                <textarea class="input-block-level typeahead" ng-model="typeaheadValue"></textarea>
-
-                                <!--<input type="text" ng-model="typeaheadValue" bs-typeahead="typeaheadFn">-->
-                                <!--<input type="text" class="typeahead" ng-model="typeaheadValue" bs-typeahead="typeaheadFn" style="width: 90%">-->
-
-                            </td>
-                            <td>
-                                <input type="text" ng-model="Prestacion.Cantidad" style="width: 50px" />
-                            </td>
-                            <td>
-                                <input id="txtTarifa" type="text" ng-model="Prestacion.Tarifa" style="width: 50px" />
-                            </td>
-
-                            <td>
-                                <button class="btn" ng-click="AgregarCobertura()">Agregar </button>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="row">
-
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>Codigo</th>
-                                <th>Descripcion</th>
-
-                                <th>Cantidad
-                                    <br />
-                                </th>
-                                <th>Costo</th>
-                                <th>Total</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="p in Autorizacion.Prestaciones">
-                                <td>{{ p.CoberturaId }}
-                                </td>
-                                <td style="max-width: 150px">
-                                    <!--<textarea rows="1" cols="40" style="width: 100px" type="text" ng-model=""></textarea>-->
-                                    {{ p.Nombre }}
-                                </td>
-                                <td>
-                                    <!--  <input style="width: 50px" type="text" ng-model="p.Cantidad" />-->
-                                    {{ p.Cantidad }}
-                                </td>
-                                <td>
-                                    <!--<input style="width: 100px" type="text" ng-model="p.Tarifa" />-->
-                                    {{ p.Tarifa  | currency  }}
-                                </td>
-                                <td>{{p.Cantidad * p.Tarifa | currency}}
-                                </td>
-                                <td>
-                                    <form class="form-inline">
-                                        <button class="btn btn-danger" ng-click="Remover($index)"><i class="icon-white icon-remove"></i></button>
-                                        <button class="btn" ng-click="Edit($index)"><i class="icon-pencil"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tfoot style="font-weight: bold">
-                            <tr>
-                                <td></td>
-                                <td>Totales</td>
-                                <td>{{ TotalCantidadPrestaciones() | number  }}</td>
-                                <td></td>
-                                <td>{{ TotalGeneral() | currency  }}</td>
-                            </tr>
-                        </tfoot>
-                    </table>
-
-                </div>
-
-                <div class="pull-left">
-                    <button class="btn" ng-click="Limpiar()">Nuevo</button>
-                </div>
-
-                <div class="pull-right">
-                    <button class="btn" ng-click="Autorizar()" class="btn btn-success">Enviar Solicitud</button>
-                </div>
+                </span>
             </div>
         </div>
     </div>
+    <fieldset>
+        <legend>Datos de Afiliado</legend>
+
+        <div class="row">
+            <div class="span2" style="vertical-align: middle">
+                @*<img alt="afiliado" src="../Images/nofoto.jpg">*@
+                <img alt="afiliado" class="img-polaroid" ng-src="{{FotoAfiliado}}">
+            </div>
+            <div class="span8 well">
+
+                <div class="row">
+                    <div class="span1">
+                        <label>Carné </label>
+                        <input type="text" class="input-block-level" value="{{ Autorizacion.Afiliado.Id }}" readonly />
+                    </div>
+
+                    <div class="span3">
+                        <label>Nombre </label>
+                        <input type="text" class="input-block-level" value="{{ Autorizacion.Afiliado.Nombre }}" readonly />
+                    </div>
+
+                    <div class="span2">
+                        <label>Sexo</label>
+                        <input type="text" class="input-block-level" value="{{Autorizacion.Afiliado.Sexo}}" readonly />
+
+                    </div>
+
+                    <div class="span1">
+                        <label>Edad </label>
+                        <input type="text" class="input-block-level" value="{{Autorizacion.Afiliado.Edad}}" readonly />
+                    </div>
+
+                    <div class="span1">
+                        <label>Estado </label>
+                        <input type="text" class="input-block-level" value="{{ Autorizacion.Afiliado.Estado}}" readonly />
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+
+                    <div class="span2">
+                        <label>ingreso </label>
+                        <input type="text" class="input-block-level" value="{{Autorizacion.Afiliado.FechaAfiliacion}}" readonly />
+                    </div>
+
+                    <div class="span2">
+                        <label>Regimen </label>
+                        <input type="text" class="input-block-level" value="{{ Autorizacion.Afiliado.Regimen }}" readonly />
+                    </div>
+
+                    <div class="span2">
+                        <label>Tipo  </label>
+                        <input type="text" class="input-block-level" value="{{ Autorizacion.Afiliado.Tipo }}" readonly />
+                    </div>
+
+                    <div class="span1">
+                        <label>Cotizaciones </label>
+                        <input type="text" class="input-block-level" value="{{ Autorizacion.Afiliado.Cotizaciones }}" readonly />
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="span1" ng-show="BuscandoAfiliado || CargandoPrestaciones" style="justify-content: center">
+                <img src="~/Images/loading.gif" />
+            </div>
+
+        </div>
+    </fieldset>
+    <div class="row">
+        <div class="span3">
+            <label>Fecha de Autorización: </label>
+            <input id="txtFechaServicio" type="text" datepicker ng-model="Autorizacion.FechaServicio" max-date="Today" class="input-block-level" />
+        </div>
+    </div>
+
+    <div class="SeleccionAutorizacion well" ng-show="!TipoAutorizacion && Autorizacion.Afiliado.PuedeAutoriar && Prestaciones.length > 0">
+        <h2>Seleccione Tipo de Autorización </h2>
+        <ul class="nav nav-pills nav-stacked">
+            <li ng-repeat="t in TiposAutorizacion" ng-click="SelectionarTipoAutorizacion(t)"><a>{{t.Id + ' ' + t.Nombre }} </a></li>
+
+        </ul>
+    </div>
+    <div ng-show="Autorizacion.Afiliado.PuedeAutoriar &&  Prestaciones.length > 0 && TipoAutorizacion" class="autorizacionBody">
+        <h3>Autorización de <strong>{{ TipoAutorizacion.Nombre }} </strong></h3>
+
+        <input type="button" value="Seleccionar otro tipo de autorización" class="btn" ng-click="QuitarTipoAutorizacion(Autorizacion)" />
+        <label>&nbsp;</label>
+        <div>
+            <div class="well well-small form-inline">
+                <table>
+                    <tr>
+                        <td>Código</td>
+                        <td>Nombre</td>
+                        <td>Cantidad</td>
+                        <td>Costo</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input id="txtCoberturaId" type="text" ng-model="Prestacion.CoberturaId" class="input" style="width: 50px" readonly />
+                        </td>
+                        <td style="width: 600px">
+                            <textarea class="input-block-level typeahead" ng-model="typeaheadValue"></textarea>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="Prestacion.Cantidad" style="width: 50px" />
+                        </td>
+                        <td>
+                            <input id="txtTarifa" type="text" ng-model="Prestacion.Tarifa" style="width: 50px" />
+                        </td>
+
+                        <td>
+                            <button class="btn" ng-click="AgregarCobertura()">Agregar </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Codigo</th>
+                            <th>Descripcion</th>
+
+                            <th>Cantidad
+                                    <br />
+                            </th>
+                            <th>Costo</th>
+                            <th>Total</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="p in Autorizacion.Prestaciones">
+                            <td>{{ p.CoberturaId }}
+                            </td>
+                            <td style="max-width: 150px">
+                                <!--<textarea rows="1" cols="40" style="width: 100px" type="text" ng-model=""></textarea>-->
+                                {{ p.Nombre }}
+                            </td>
+                            <td>
+                                <!--  <input style="width: 50px" type="text" ng-model="p.Cantidad" />-->
+                                {{ p.Cantidad }}
+                            </td>
+                            <td>
+                                <!--<input style="width: 100px" type="text" ng-model="p.Tarifa" />-->
+                                {{ p.Tarifa  | currency  }}
+                            </td>
+                            <td>{{p.Cantidad * p.Tarifa | currency}}
+                            </td>
+                            <td>
+                                <form class="form-inline">
+                                    <button class="btn btn-danger" ng-click="Remover($index)"><i class="icon-white icon-remove"></i></button>
+                                    <button class="btn" ng-click="Edit($index)"><i class="icon-pencil"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot style="font-weight: bold">
+                        <tr>
+                            <td></td>
+                            <td>Totales</td>
+                            <td>{{ TotalCantidadPrestaciones() | number  }}</td>
+                            <td></td>
+                            <td>{{ TotalGeneral() | currency  }}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+
+            <div class="pull-left">
+                <button class="btn" ng-click="Limpiar()">Nuevo</button>
+            </div>
+
+            <div class="pull-right">
+                <button class="btn" ng-click="Autorizar()" class="btn btn-success">Enviar Solicitud</button>
+            </div>
+        </div>
+    </div>
+
 
     <div class="footer">
         <p>&copy; Sistema experto de Autorización de Coberturas Básicas 2013</p>
     </div>
 
-    <div class="modal hide fade" id="expertResult">
+    <div class="modal hide fade" id="expertResult" style="width: 800px; margin-left: -400px;" data-backdrop="static">
 
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -177,10 +214,47 @@
 
             <h5>Motivos</h5>
 
-            <ul>
+            <ul data-ng-show="!ResultadoAnalisis.Autorizacion || ResultadoAnalisis.Autorizacion.Prestaciones.length == 0">
                 <li ng-repeat="d in ResultadoAnalisis.detalle">{{ d }}
                 </li>
             </ul>
+
+            <table class="table table-stripped" ng-show="ResultadoAnalisis.Autorizacion.Prestaciones.length > 0">
+                <thead>
+                    <tr>
+                        <th>Simon</th>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>Tarifa</th>
+                        <th>Aprobado</th>
+                        <th>Copago</th>
+                        <th>Aclaraciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="p in ResultadoAnalisis.Autorizacion.Prestaciones">
+                        <td>{{ p.Simon }}</td>
+                        <td>{{ p.Nombre }} </td>
+                        <td>{{ p.Cantidad | number }}</td>
+                        <td style="color: blue">{{ p.Tarifa | currency }}</td>
+                        <td style="color: green">{{ p.Aprobado | currency }}</td>
+                        <td style="color: red">{{ p.CoPago | currency }}</td>
+                        <td>{{p.RulesAppliances }}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th></th>
+                        <th>Totales</th>
+                        <th></th>
+                        <th style="color: blue">{{TotalTarifaAnalisis () | currency}}</th>
+                        <th style="color: green">{{TotalAprobadoAnalisis () | currency}}</th>
+                        <th style="color: red">{{TotalCopagoAnalisis () | currency}}</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+
 
         </div>
         <div class="modal-footer">
@@ -190,7 +264,7 @@
     </div>
 
 
-    <div class="modal hide fade" id="ModalAutorizacion">
+    <div class="modal hide fade" id="ModalAutorizacion" data-backdrop="static">
 
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -199,7 +273,7 @@
         <div class="modal-body well">
 
             <h4>Número Autorización: <span style="color: blue">{{ Auth.Id }} </span></h4>
-            <h4>Este número es el que usted debe utilizar par reclamar el pago.</h4>
+            <h4>Este número es el que la prestadora debe utilizar para reclamar el pago.</h4>
 
             <div style="font-size: 16px;">
                 <ul>

@@ -50,8 +50,14 @@ namespace Sigs.AutorizacionesOnline.Controllers
                 afiliado.Id,
                 Nombre = afiliado.NombreCompleto,
                 afiliado.Edad,
-                afiliado.Sexo,
-                Foto = "",
+                Sexo = afiliado.Sexo == "F" ? "Femenino" : "Maculino",
+                Foto = afiliado.Foto,
+                afiliado.Disponible,
+                Estado = afiliado.Disponible ? "Activo" : "Sin Cobertura",
+                FechaAfiliacion = afiliado.FechaAfiliacion.ToShortDateString(),
+                Regimen = "Contributivo",
+                Tipo = "Titular",
+                Cotizaciones = afiliado.CotizacionesConsecutivasPDSS,
                 PuedeAutoriar = true
             };
         }

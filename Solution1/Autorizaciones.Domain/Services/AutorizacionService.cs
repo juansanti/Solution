@@ -30,7 +30,7 @@ namespace Sigs.AutorizacionesOnline.Models
 
         public IEnumerable<Prestacion> GetPrestacionesPDSS()
         {
-            return db.Prestaciones.ToList();
+            return db.Prestaciones;
         }
 
         public void Crear(Autorizacion autorizacion)
@@ -40,6 +40,6 @@ namespace Sigs.AutorizacionesOnline.Models
             db.SaveChanges();
         }
 
- 
+
     }
 }

@@ -26,6 +26,8 @@ namespace Sigs.AutorizacionesOnline.Models
 
         public virtual ICollection<Autorizacion> Autorizaciones { get; set; }
 
+        public string Foto { get; set; }
+
         public string Sexo { get; set; }
 
         public decimal ConsumidoSubGrupo(DateTime fechaServicio, SubGrupo subgrupo)

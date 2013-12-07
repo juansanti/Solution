@@ -298,6 +298,9 @@
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="FotosAfiliados\3.jpg" />
+    <Content Include="FotosAfiliados\1.jpg" />
+    <Content Include="FotosAfiliados\5.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Images\loading.gif" />
     <Content Include="Images\loadingbar.gif" />
